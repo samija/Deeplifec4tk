@@ -116,7 +116,18 @@ class User implements UserInterface, ProviderInterface
      * @ZFA\Options({"label":"phone number"})
      */
     protected $phone_no = null;
-    
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", length=100, nullable=true)
+     *
+     * @ZFA\Filter({"name":"StringTrim"})
+     * @ZFA\Required(true)
+     * @ZFA\Validator({"name":"StringLength", "options":{"min":1, "max":100}})
+     * @ZFA\Attributes({"type":"text", "placeholder":"0916587396"})
+     * @ZFA\Options({"label":"phone number"})
+     */
+    protected $mentor_id = null;
     /**
      * @var string
      * @ORM\Column(type="string", length=100, nullable=true)
