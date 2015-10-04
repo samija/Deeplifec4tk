@@ -71,7 +71,7 @@ $settings = [
      * Default value: array containing 'email'
      * Accepted values: array containing one or more of: email, username
      */
-    'auth_identity_fields' => array( 'email' ),
+    'auth_identity_fields' => array( 'phoneno' ),
 
     /**
      * Login form timeout
@@ -101,7 +101,7 @@ $settings = [
      *
      * Accepted values: boolean true or false
      */
-    //'login_after_registration' => true,
+    'login_after_registration' => false,
 
     /**
      * Registration Form Captcha
@@ -109,7 +109,7 @@ $settings = [
      * Determines if a captcha should be utilized on the user registration form.
      * Default value is false.
      */
-    //'use_registration_form_captcha' => false,
+    'use_registration_form_captcha' => false,
 
     /**
      * Form Captcha Options
@@ -153,7 +153,7 @@ $settings = [
      * Accepted values: A valid route name within your application
      *
      */
-    //'login_redirect_route' => 'home',
+    'login_redirect_route' => 'home',
 
     /**
      * Logout Redirect Route
