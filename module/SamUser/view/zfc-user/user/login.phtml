@@ -140,38 +140,81 @@ $form->setAttribute('method', 'post');
                <form class="m-t" role="form" action="index.html">
                    <?php echo $this->form()->openTag($form) ?>
                    <dl class="zend_form">
-            <formgroup style="align-content: center;">
-                <div class="col-sm-8">
-                    <div class="row zeroMargin margin-top-20">
-                        <div class="form-group">
-                            <?php echo $this->formElementErrors($form->get('identity')) ?>
-                            <input type="email" class="form-control" placeholder="Enter email address" required="" <?php echo $this->formInput($form->get('identity')) ?>
-                        </div>
-                    </div><br/>
-                    <div class="row zeroMargin margin-top-20">
-                        <input type="password" class="form-control" placeholder="Enter password" required="" <?php echo $this->formInput($form->get('credential')) ?>
-                    </div>
+<!--            <formgroup style="align-content: center;">-->
+<!--                <div class="col-sm-8">-->
+<!--                    <div class="row zeroMargin margin-top-20">-->
+<!--                        <div class="form-group">-->
+<!--                            --><?php //echo $this->formElementErrors($form->get('identity')) ?>
+<!--                            <input type="email" class="form-control" placeholder="Enter email address" required="" --><?php //echo $this->formInput($form->get('identity')) ?>
+<!--                        </div>-->
+<!--                    </div><br/>-->
+<!--                    <div class="row zeroMargin margin-top-20">-->
+<!--                        <input type="password" class="form-control" placeholder="Enter password" required="" --><?php //echo $this->formInput($form->get('credential')) ?>
+<!--                    </div>-->
+<!---->
+<!---->
+<!--                    <br/>-->
+<!--                    <!--this is the sign up button-->
+<!--                    <div class="row zeroMargin margin-top-20">-->
+<!---->
+<!--                        <button type="button" class="btn btn-info col-md-12">-->
+<!--                            <strong>Sign in</strong>-->
+<!--                        </button><br/><br/>-->
+<!--                        <h4>-->
+<!--                            Don't have an account yet?-->
+<!--                        </h4>-->
+<!---->
+<!--                        <button type="button" class="btn btn-info col-md-12"-->
+<!--                        <a href="--><?php //echo $this->url('zfcuser/register') . ($this->redirect ? '?redirect='.$this->redirect : '') ?><!--<!--"></a>-->
+<!--                            <strong >Sign UP</strong>-->
+<!--                        </button>-->
+<!---->
+<!--                        <a href="--><?php //echo $this->url('zfcuser/changepassword') ?><!--">-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </formgroup>-->
+                       <dl class="zend_form">
+                           <div class="form-group">
+                               <?php echo $this->formElementErrors($form->get('identity')) ?>
+                               <input type="email" class="form-control" placeholder="email" required="" <?php echo $this->formInput($form->get('identity')) ?>
+                           </div>
 
 
-                    <br/>
-                    <!--this is the sign up button-->
-                    <div class="row zeroMargin margin-top-20">
+<!--                           <dt>--><?php //echo $this->formLabel($form->get('identity')) ?><!--</dt>-->
+<!--                           <dd>--><?php //echo $this->formInput($form->get('identity')) ?><!--</dd>-->
+                           <div class="form-group">
+                               <input type="password" class="form-control" placeholder="Password" required="" <?php echo $this->formInput($form->get('credential')) ?>
+                           </div>
+<!--                           <dt><label>--><?php //echo 'Password'; ?><!--</label></dt>-->
+<!--                           <dd>--><?php //echo $this->formInput($form->get('credential')) ?><!--</dd>-->
 
-                        <button type="button" class="btn btn-info col-md-12">
-                            <strong>Sign in</strong>
-                        </button><br/><br/>
-                        <h4>
-                            Don't have an account yet?
-                        </h4>
+<!--                           --><?php //if ($this->redirect): ?>
+<!--                               <input type="hidden" name="redirect" value="--><?php //echo 'Sign In'; ?><!--" />-->
+<!--                           --><?php //endif ?>
 
-                        <button type="button" class="btn btn-info col-md-12"
-                            <strong >Sign UP</strong>
-                        </button>
+<!--                           <dd>--><?php //echo $this->formButton($form->get('submit')) ?><!--</dd>-->
+                       </dl>
 
-                        <a href="<?php echo $this->url('zfcuser/changepassword') ?>">
-                    </div>
-                </div>
-            </formgroup>
+                       <?php echo $this->form()->closeTag() ?>
+
+                       <a href="<?php echo $this->url("home") ?>">
+                       <button type="button" class="btn btn-info col-md-12">Login</button>
+<!--                       <button type="submit" class="btn btn-primary block full-width m-b">-->
+
+                       <a href="<?php echo $this->url('zfcuser/changepassword') ?>">
+                           <small>Forgot password?</small>
+                       </a>
+
+                       <p class="text-muted text-center">
+                           <small>Do not have an account?</small>
+                       </p>
+                       <a class="btn btn-sm btn-white btn-block" href="<?php echo $this->url('zfcuser/register') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>" <?php if ($this->enableRegistration) : ?>
+                           <a href="<?php echo $this->url('zfcuser/register') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>">Create an account</a>
+                       <?php endif; ?>
+               </form>
+               <?php if ($this->enableRegistration) : ?>
+                   Not registered? <a href="<?php echo $this->url('zfcuser/register') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>">Sign up!</a>
+               <?php endif; ?>
             <!--<p><a class="navy-link" href="#" role="button">Details &raquo;</a></p>-->
            </div>
         </div>
@@ -267,47 +310,47 @@ $form->setAttribute('method', 'post');
 
         <div class="col-md-6">
             <div class="ibox-content">
-                <form class="m-t" role="form" action="index.html">
-            <?php echo $this->form()->openTag($form) ?>
-            <dl class="zend_form">
-                <div class="form-group">
-                    <?php echo $this->formElementErrors($form->get('identity')) ?>
-                    <input type="email" class="form-control" placeholder="email" required="" <?php echo $this->formInput($form->get('identity')) ?>
-                </div>
-
-
+<!--                <form class="m-t" role="form" action="index.html">-->
+<!--            --><?php //echo $this->form()->openTag($form) ?>
+<!--            <dl class="zend_form">-->
+<!--                <div class="form-group">-->
+<!--                    --><?php //echo $this->formElementErrors($form->get('identity')) ?>
+<!--                    <input type="email" class="form-control" placeholder="email" required="" --><?php //echo $this->formInput($form->get('identity')) ?>
+<!--                </div>-->
+<!---->
+<!---->
 <!--                <dt>--><?php //echo $this->formLabel($form->get('identity')) ?><!--</dt>-->
 <!--                <dd>--><?php //echo $this->formInput($form->get('identity')) ?><!--</dd>-->
-                <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Password" required="" <?php echo $this->formInput($form->get('credential')) ?>
-                </div>
+<!--                <div class="form-group">-->
+<!--                    <input type="password" class="form-control" placeholder="Password" required="" --><?php //echo $this->formInput($form->get('credential')) ?>
+<!--                </div>-->
 <!--                <dt><label>--><?php //echo 'Password'; ?><!--</label></dt>-->
 <!--                <dd>--><?php //echo $this->formInput($form->get('credential')) ?><!--</dd>-->
-
-                <?php if ($this->redirect): ?>
-                    <input type="hidden" name="redirect" value="<?php echo 'Sign In'; ?>" />
-                <?php endif ?>
-
+<!---->
+<!--                --><?php //if ($this->redirect): ?>
+<!--                    <input type="hidden" name="redirect" value="--><?php //echo 'Sign In'; ?><!--" />-->
+<!--                --><?php //endif ?>
+<!---->
 <!--                <dd>--><?php //echo $this->formButton($form->get('submit')) ?><!--</dd>-->
-            </dl>
-
-            <?php echo $this->form()->closeTag() ?>
-
-
-
-                    <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
-
-                    <a href="<?php echo $this->url('zfcuser/changepassword') ?>">
-                        <small>Forgot password?</small>
-                    </a>
-
-                    <p class="text-muted text-center">
-                        <small>Do not have an account?</small>
-                    </p>
-                    <a class="btn btn-sm btn-white btn-block" href="<?php echo $this->url('zfcuser/register') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>" <?php if ($this->enableRegistration) : ?>
-                        <a href="<?php echo $this->url('zfcuser/register') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>">Create an account</a>
-                <?php endif; ?>
-                </form>
+<!--            </dl>-->
+<!---->
+<!--            --><?php //echo $this->form()->closeTag() ?>
+<!---->
+<!---->
+<!---->
+<!--                    <button type="submit" class="btn btn-primary block full-width m-b">Login</button>-->
+<!---->
+<!--                    <a href="--><?php //echo $this->url('zfcuser/changepassword') ?><!--">-->
+<!--                        <small>Forgot password?</small>-->
+<!--                    </a>-->
+<!---->
+<!--                    <p class="text-muted text-center">-->
+<!--                        <small>Do not have an account?</small>-->
+<!--                    </p>-->
+<!--                    <a class="btn btn-sm btn-white btn-block" href="--><?php //echo $this->url('zfcuser/register') . ($this->redirect ? '?redirect='.$this->redirect : '') ?><!--" --><?php //if ($this->enableRegistration) : ?>
+<!--                        <a href="--><?php //echo $this->url('zfcuser/register') . ($this->redirect ? '?redirect='.$this->redirect : '') ?><!--">Create an account</a>-->
+<!--                --><?php //endif; ?>
+<!--                </form>-->
 <!--                --><?php //if ($this->enableRegistration) : ?>
 <!--                    Not registered? <a href="--><?php //echo $this->url('zfcuser/register') . ($this->redirect ? '?redirect='.$this->redirect : '') ?><!--">Sign up!</a>-->
 <!--                --><?php //endif; ?>
