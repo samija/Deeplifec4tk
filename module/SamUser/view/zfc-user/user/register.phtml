@@ -164,7 +164,7 @@ echo $this->form()->openTag($form);
                         <?php elseif ($element instanceof Zend\Form\Element\Captcha): ?>
                             <dd><?php echo $this->formCaptcha($element) . $this->formElementErrors($element) ?></dd>
                         <?php else: ?>
-                            <dd> <input type="password" class="form-control" placeholder="Password" required="" <?php echo $this->formInput($element) . $this->formElementErrors($element) ?></dd>
+                            <dd> <input type="text" class="form-control" placeholder=" " required="" <?php echo $this->formInput($element) . $this->formElementErrors($element) ?></dd>
                         <?php endif ?>
                     <?php endforeach ?>
                 </dl>

@@ -78,8 +78,22 @@ class Module
                             ),
                         )
                     );
-                }
+
+
+
+            $form->add(
+                array(
+                    'name' => 'role',
+                    'options' => array(
+                        'label' => 'Role',
+                    ),
+                    'attributes' => array(
+                        'type'  => 'number',
+                    ),
+                )
             );
+        }
+);
 
             // here's the storage bit
 

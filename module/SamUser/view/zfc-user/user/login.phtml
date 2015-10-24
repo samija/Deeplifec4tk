@@ -139,7 +139,7 @@ $form->setAttribute('method', 'post');
             <h4>Log in back to your Account</h4>
                <form class="m-t" role="form" action="index.html">
                    <?php echo $this->form()->openTag($form) ?>
-                   <dl class="zend_form">
+                   <dl class="zend_form" />
 <!--            <formgroup style="align-content: center;">-->
 <!--                <div class="col-sm-8">-->
 <!--                    <div class="row zeroMargin margin-top-20">-->
@@ -195,17 +195,18 @@ $form->setAttribute('method', 'post');
 
 <!--                           <dd>--><?php //echo $this->formButton($form->get('submit')) ?><!--</dd>-->
                        </dl>
-                       <a href="<?php echo $this->url("users") ?>">
-                       <?php if ($this->redirect): ?>
-                           <input type="hidden" name="redirect" value="<?php echo $this->escapeHtml($this->redirect) ?>" />
-                       <?php endif ?>
+<!--                       <a href="--><?php //echo $this->url("users") ?><!--">-->
+<!--                       --><?php //if ($this->redirect): ?>
+<!--                           <input type="hidden" name="redirect" value="--><?php //echo $this->escapeHtml($this->redirect) ?><!--" />-->
+<!--                       --><?php //endif ?>
 <!--                       <dd> <button type="button" class="btn btn-info col-md-12"> --><?php //echo $this->formButton($form->get('submit')) ?><!--</dd>-->
 
 
 <!--                       <button type="button" class="btn btn-info col-md-12">Login</button>-->
-                       <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+                       <button type="submit" class="btn btn-info col-md-12">Login</button>
+
                            <?php echo $this->form()->closeTag() ?>
-                       <a href="<?php echo $this->url('zfcuser/changepassword') ?>">
+<!--                       <a href="--><?php //echo $this->url('zfcuser/changepassword') ?><!--">-->
                            <small>Forgot password?</small>
                        </a>
 
@@ -217,7 +218,7 @@ $form->setAttribute('method', 'post');
 <!--                       --><?php //endif; ?>
                </form>
                <?php if ($this->enableRegistration) : ?>
-                   Not registered? <a href="<?php echo $this->url('zfcuser/register') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>">Sign up!</a>
+                   Not registered? <a href="<?php echo $this->url('zfcuser/register') ?>">Sign up!</a>
                <?php endif; ?>
             <!--<p><a class="navy-link" href="#" role="button">Details &raquo;</a></p>-->
            </div>
