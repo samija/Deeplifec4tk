@@ -2,8 +2,6 @@
 
 namespace SamUser\Controller;
 
-use Zend\Mvc\Controller\AbstractRestfulController;
-use Zend\View\Model\JsonModel;
 use Zend\Validator\ValidatorChain;
 use DoctrineModule\Validator\ObjectExists;
 use Zend\Mvc\Controller\AbstractActionController;

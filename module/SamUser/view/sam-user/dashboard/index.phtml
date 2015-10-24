@@ -1,1 +1,8 @@
-<h1> add disciple </h1>
+<!-- Test if the User is connected -->
+<?php if(!$this->zfcUserIdentity()): ?>
+    <!-- display the login form -->
+    <?php echo $this->zfcUserLoginWidget(array('redirect'=>'application')); ?>
+<?php else: ?>
+    <!-- display the 'display name' of the user -->
+    <?php echo $this->zfcUserIdentity()->getDisplayname(); ?>
+<?php endif?>
