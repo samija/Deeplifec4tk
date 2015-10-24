@@ -28,6 +28,32 @@ return array(
                     ),
                 ),
             ),
+            'dashboard' => array(
+                'type'    => 'Literal',
+                'options' => array(
+                    'route'    => '/dashboard',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'SamUser\Controller',
+                        'controller'    => 'Dashboard',
+                        'action'        => 'index',
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'default' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:action[/:id]]',
+                            'constraints' => array(
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'id'     => '[0-9]+',
+                            ),
+                            'defaults' => array(
+                            ),
+                        ),
+                    ),
+                ),
+            ),
             'roles' => array(
                 'type'    => 'Literal',
                 'options' => array(
@@ -54,14 +80,14 @@ return array(
                     ),
                 ),
             ),
+
         ),
     ),
     'controllers' => array(
         'invokables' => array(
             'SamUser\Controller\Users' => 'SamUser\Controller\UsersController',
-            'SamUser\Controller\Rest' => 'SamUser\Controller\RestController',
             'SamUser\Controller\Roles' => 'SamUser\Controller\RolesController',
-            'SamUser\Controller\RoleRest' => 'SamUser\Controller\RoleRestController',
+            'SamUser\Controller\Dashboard' => 'SamUser\Controller\DashboardController',
         ),
     ),
     'view_manager' => array(
