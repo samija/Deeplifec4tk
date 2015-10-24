@@ -56,6 +56,19 @@ class Module
                     $form = $e->getTarget();
                     $form->add(
                         array(
+                            'name' => 'firstName',
+                            'options' => array(
+                                'label' => 'Name',
+                            ),
+                            'attributes' => array(
+                                'type'  => 'text',
+                            ),
+                        )
+                    );
+
+
+                    $form->add(
+                        array(
                             'name' => 'phoneno',
                             'options' => array(
                                 'label' => 'Phone no',
@@ -65,8 +78,6 @@ class Module
                             ),
                         )
                     );
-                    
-
                     $form->add(
                         array(
                             'name' => 'country',
@@ -79,20 +90,7 @@ class Module
                         )
                     );
 
-
-
-            $form->add(
-                array(
-                    'name' => 'role',
-                    'options' => array(
-                        'label' => 'Role',
-                    ),
-                    'attributes' => array(
-                        'type'  => 'number',
-                    ),
-                )
-            );
-        }
+                }
 );
 
             // here's the storage bit
@@ -103,6 +101,9 @@ class Module
                 $form = $e->getParam('form');
                 $user = $e->getParam('user');
                 /* @var $user \SamUser\Entity\User */
+                $user->setPhoneno(  $form->get('firstName')->getValue() );
+                $user->setPhoneno(  $form->get('middleName')->getValue() );
+                $user->setPhoneno(  $form->get('sureName')->getValue() );
                 $user->setPhoneno(  $form->get('phoneno')->getValue() );
                 $user->setCountry( $form->get('country')->getValue() );
             });
