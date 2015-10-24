@@ -101,15 +101,15 @@ return array(
              * access to all routes unless they are specified here.
              */
             'BjyAuthorize\Guard\Route' => array(
-                array('route' => 'zfcuser', 'roles' => array('user')),
+                array('route' => 'zfcuser', 'roles' => array('guest', 'user')),
                 array('route' => 'zfcuser/logout', 'roles' => array('user')),
                 array('route' => 'zfcuser/login', 'roles' => array('guest', 'user')),
                 array('route' => 'zfcuser/register', 'roles' => array('guest', 'user')),
 
                 // Below is the default index action used by the ZendSkeletonApplication
                 array('route' => 'home', 'roles' => array('user')),
-                array('route' => 'application', 'roles' => array('user')),
-                array('route' => 'application/default', 'roles' => array('user')), // Change language
+                array('route' => 'application', 'roles' => array('guest', 'user')),
+                array('route' => 'application/default', 'roles' => array('guest', 'user')), // Change language
 
                 // User module
                 array('route' => 'users', 'roles' => array('user')),
@@ -123,12 +123,11 @@ return array(
                 array('route' => 'accessesApi', 'roles' => array('user')),          // Access data
                 array('route' => 'contacts', 'roles' => array('user')),
                 array('route' => 'contacts/default', 'roles' => array('user')),
-                array('route' => 'contactsApi', 'roles' => array('user')),          // Contact data
 
-                // Tax module
-                array('route' => 'taxes', 'roles' => array('user')),
-                array('route' => 'taxes/default', 'roles' => array('user')),
-                array('route' => 'taxesApi', 'roles' => array('user')),             // Tax data
+                // Dashboard module
+                array('route' => 'dashboard', 'roles' => array('guest', 'user')),
+                array('route' => 'dashboard/default', 'roles' => array('guest', 'user')),
+
             ),
         ),
     ),
