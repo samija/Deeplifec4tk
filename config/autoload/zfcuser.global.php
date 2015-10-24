@@ -101,7 +101,7 @@ $settings = [
      *
      * Accepted values: boolean true or false
      */
-    'login_after_registration' => false,
+    'login_after_registration' => true,
 
     /**
      * Registration Form Captcha
@@ -163,7 +163,7 @@ $settings = [
      * Default value: 'zfcuser/login'
      * Accepted values: A valid route name within your application
      */
-    //'logout_redirect_route' => 'zfcuser/login',
+    'logout_redirect_route' => 'zfcuser/login',
 
     /**
      * Password Security

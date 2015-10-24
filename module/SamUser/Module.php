@@ -102,8 +102,6 @@ class Module
                 $user = $e->getParam('user');
                 /* @var $user \SamUser\Entity\User */
                 $user->setPhoneno(  $form->get('firstName')->getValue() );
-                $user->setPhoneno(  $form->get('middleName')->getValue() );
-                $user->setPhoneno(  $form->get('sureName')->getValue() );
                 $user->setPhoneno(  $form->get('phoneno')->getValue() );
                 $user->setCountry( $form->get('country')->getValue() );
             });
