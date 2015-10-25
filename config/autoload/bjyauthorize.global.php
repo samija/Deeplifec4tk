@@ -125,8 +125,8 @@ return array(
                 array('route' => 'contacts/default', 'roles' => array('user')),
 
                 // Dashboard module
-                array('route' => 'dashboard', 'roles' => array('user')),
-                array('route' => 'dashboard/default', 'roles' => array('user')),
+                array('route' => 'dashboard', 'roles' => array('guest', 'user')),
+                array('route' => 'dashboard/default', 'roles' => array('guest', 'user')),
 
             ),
         ),
