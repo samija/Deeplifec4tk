@@ -30,8 +30,8 @@
             <li class="active">
                 <a href="http://localhost:63342/Dashboard/index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse in">
-                    <li class="active"><a href="http://localhost:63342/Dashboard/index.html">Dashboard v.1</a></li>
-                    <li><a href="http://localhost:63342/Dashboard/dashboard_2.html">Settings</a></li>
+                    <li class="active"><a href="<?php echo $this->url('application') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>">User Dashboard</a></li>
+                    <li><a href="<?php echo $this->url('application') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>">Settings</a></li>
 
                 </ul>
             </li>
@@ -39,8 +39,8 @@
             <li>
                 <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Disciples</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
-                    <li><a href="http://localhost:63342/Dashboard/graph_flot.html">Add</a></li>
-                    <li><a href="http://localhost:63342/Dashboard/graph_morris.html">List</a></li>
+                    <li><a href="<?php echo $this->url('application') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>">Add</a></li>
+                    <li><a href="<?php echo $this->url('application') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>">List</a></li>
 
                 </ul>
             </li>
