@@ -24,16 +24,36 @@ class DashboardController  extends AbstractActionController
         ));
         return $view;
     }
-//    userdashboard
+//    Add Disiple
     Public function adddiscipleAction()
     {
+//        $form = new \SamUser\Form\AddUser();
+//        $form->setHydrator(new \Zend\Stdlib\Hydrator\Reflection());
+//        $form->bind(new \SamUser\Entity\User());
+//
+//        if ($this->getRequest()->isPost()) { $form->setData($this->getRequest()->getPost());
+//            if ($form->isValid()) { var_dump($form->getData());
+//            } else {
+//                return new ViewModel(
+//                    array(
+//                        'form' => $form
+//                    )
+//                ); }
+//        } else {
+//            return new ViewModel(
+//                array(
+//                    'form' => $form
+//               ) );
+//        }
+//    }
         $view = new ViewModel(array(
             'Url' => '/',
             'title' => 'Add Disciples',
+            'form' => new \SamUser\Form\AddUser(),
         ));
         return $view;
-    }
 
+    }
     //list disciples
     Public function listdiscipleAction()
     {
