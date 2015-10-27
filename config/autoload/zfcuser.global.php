@@ -153,7 +153,7 @@ $settings = [
      * Accepted values: A valid route name within your application
      *
      */
-    'login_redirect_route' => 'application',
+    'login_redirect_route' => 'dashboard',
 
     /**
      * Logout Redirect Route

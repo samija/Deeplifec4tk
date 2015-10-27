@@ -14,22 +14,43 @@ use Zend\View\Model\ViewModel;
 
 class DashboardController  extends AbstractActionController
 {
-
     // add disciple
     Public function indexAction()
     {
-        return new ViewModel();
+        $view = new ViewModel(array(
+            'imageurl' => '',
+            'Url' => '/',
+            'title' => 'User Dashboard',
+        ));
+        return $view;
+    }
+//    userdashboard
+    Public function adddiscipleAction()
+    {
+        $view = new ViewModel(array(
+            'Url' => '/',
+            'title' => 'Add Disciples',
+        ));
+        return $view;
     }
 
     //list disciples
     Public function listdiscipleAction()
     {
-        return new ViewModel();
+        $view = new ViewModel(array(
+            'Url' => '/',
+            'title' => 'Your Disciples',
+        ));
+        return $view;
     }
 
     //update user info
     Public function updateinfoAction()
     {
-        return new ViewModel();
+        $view = new ViewModel(array(
+            'Url' => '/',
+            'title' => 'Update Your Information',
+        ));
+        return $view;
     }
 }

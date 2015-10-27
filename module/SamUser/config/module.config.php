@@ -31,15 +31,46 @@ return array(
             'dashboard' => array(
                 'type'    => 'Literal',
                 'options' => array(
-                    'route'    => '/reg',
+                    'route'    => '/dashboard',
                     'defaults' => array(
                         '__NAMESPACE__' => 'SamUser\Controller',
-                        'controller'    => 'Dashboard',
+                        'controller'    => 'dashboard',
                         'action'        => 'index',
                     ),
                 ),
                 'may_terminate' => true,
                 'child_routes' => array(
+                        'adddisciple' => array(
+                            'type' => 'Literal',
+                            'options' => array(
+                                'route' => '/adddisciple',
+                                'defaults' => array(
+                                    'controller' => 'dashboard',
+                                    'action'     => 'adddisciple',
+                                ),
+                            ),
+                        ),
+                    'listdisciple' => array(
+                        'type' => 'Literal',
+                        'options' => array(
+                            'route' => '/listdisciple   ',
+                            'defaults' => array(
+                                'controller' => 'dashboard',
+                                'action'     => 'listdisciple',
+                            ),
+                        ),
+                    ),
+                    'updateinfo' => array(
+                        'type' => 'Literal',
+                        'options' => array(
+                            'route' => '/updateinfo',
+                            'defaults' => array(
+                                'controller' => 'dashboard',
+                                'action'     => 'updateinfo',
+                            ),
+                        ),
+                    ),
+
                     'default' => array(
                         'type'    => 'Segment',
                         'options' => array(

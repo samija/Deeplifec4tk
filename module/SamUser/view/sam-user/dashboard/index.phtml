@@ -1,9 +1,21 @@
-<!-- Test if the User is connected -->
-<?php if(!$this->zfcUserIdentity()): ?>
-    <!-- display the login form -->
-    <?php echo $this->zfcUserLoginWidget(array('redirect'=>'application')); ?>
-<?php else: ?>
-    <!-- display the 'display name' of the user -->
-    <?php echo $this->zfcUserIdentity()->getDisplayname(); ?>
-<?php endif?>
 
+
+    <?php echo $this->partial('rnav'); ?>
+    <?php echo $this->partial('headnav'); ?>
+
+    <div id="page-wrapper" class="gray-bg">
+        <!--top navigation-->
+        <?php echo $this->partial('headtitle'); ?>
+
+        <?php echo $this->partial('profile'); ?>
+        <?php echo $this->partial('mentorinfo'); ?>
+        <?php echo $this->partial('wbsinfo'); ?>
+        <div class="row">
+
+
+
+        </div>
+
+
+    </div>
+    <?php echo $this->partial('footer'); ?>

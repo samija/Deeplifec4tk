@@ -5,22 +5,22 @@
                 <div class="dropdown profile-element"> <span>
                             <img alt="image" class="img-circle" style="ima" src="
                         <?php if(!$this->zfcUserIdentity()): ?>
-                            <?php echo $this->zfcUserLoginWidget(array('redirect'=>'application')); ?>
+                            <?php echo $this->zfcUserLoginWidget(array('redirect'=>'dashboard')); ?>
                         <?php else: ?>
                             <?php echo $this->zfcUserIdentity()->getPicture(); ?>
                         <?php endif?>"
                              </span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs">
-                                            <?php echo $this->zfcUserIdentity()->getDisplayname(); ?>
+                                          <strong>  <?php echo $this->zfcUserIdentity()->getDisplayname(); ?>
                                     </strong>
                              </span> <span class="text-muted text-xs block">Missionarry <b class="caret"></b></span> </span> </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                        <li><a href="/Dashboard/profile.html">Profile</a></li>
-                        <li><a href="http://localhost:63342/Dashboard/contacts.html">Notifications</a></li>
-                        <li><a href="http://localhost:63342/Dashboard/mailbox.html">Messages</a></li>
+                        <li><a href="<?php echo $this->url('dashboard/updateinfo') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>">Profile</a></li>
+                        <li><a href="<?php echo $this->url('dashboard/updateinfo') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>">Notifications</a></li>
+                        <li><a href="<?php echo $this->url('dashboard/updateinfo') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>">Messages</a></li>
                         <li class="divider"></li>
-                        <li><a href="http://localhost:63342/Dashboard/login.html">Logout</a></li>
+                        <li><a href="<?php echo $this->url('zfcuser/logout') ?>">Logout</a></li>
                     </ul>
                 </div>
                 <div class="logo-element">
@@ -28,19 +28,19 @@
                 </div>
             </li>
             <li class="active">
-                <a href="http://localhost:63342/Dashboard/index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
+                <a href="   "><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse in">
-                    <li class="active"><a href="<?php echo $this->url('application') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>">User Dashboard</a></li>
-                    <li><a href="<?php echo $this->url('application') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>">Settings</a></li>
+                    <li class="active"><a href="<?php echo $this->url('dashboard') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>"">User Dashboard</a></li>
+                    <li><a href="<?php echo $this->url('dashboard/updateinfo') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>">Settings</a></li>
 
                 </ul>
             </li>
 
-            <li>
-                <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Disciples</span><span class="fa arrow"></span></a>
+            <li >
+                <a href=" "><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Disciples</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
-                    <li><a href="<?php echo $this->url('application') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>">Add</a></li>
-                    <li><a href="<?php echo $this->url('application') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>">List</a></li>
+                    <li><a href="<?php echo $this->url('dashboard/adddisciple') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>">Add</a></li>
+                    <li><a href="<?php echo $this->url('dashboard/listdisciple') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>">List</a></li>
 
                 </ul>
             </li>

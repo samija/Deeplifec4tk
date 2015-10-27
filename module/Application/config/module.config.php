@@ -29,7 +29,7 @@ return array(
             'application' => array(
                 'type'    => 'Literal',
                 'options' => array(
-                    'route'    => '/dashboard',
+                    'route'    => '/application',
                     'defaults' => array(
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller'    => 'Index',
@@ -88,6 +88,8 @@ return array(
             'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
             'rnav'  => __DIR__ . '/../view/layout/rnav.phtml',
             'profile'  => __DIR__ . '/../view/layout/profile.phtml',
+            'mentorinfo'  => __DIR__ . '/../view/layout/mentorinfo.phtml',
+            'wbsinfo'  => __DIR__ . '/../view/layout/wbsinfo.phtml',
             'headtitle'  => __DIR__ . '/../view/layout/headtitle.phtml',
             'headnav'  => __DIR__ . '/../view/layout/headnav.phtml',
             'footer'  => __DIR__ . '/../view/layout/footer.phtml',
