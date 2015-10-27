@@ -18,7 +18,7 @@ class DashboardController  extends AbstractActionController
     // add disciple
     Public function indexAction()
     {
-        return new  ViewModel();
+        return new ViewModel();
     }
 
     //list disciples

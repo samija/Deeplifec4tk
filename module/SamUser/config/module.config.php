@@ -31,7 +31,7 @@ return array(
             'dashboard' => array(
                 'type'    => 'Literal',
                 'options' => array(
-                    'route'    => '/dashboard',
+                    'route'    => '/reg',
                     'defaults' => array(
                         '__NAMESPACE__' => 'SamUser\Controller',
                         'controller'    => 'Dashboard',

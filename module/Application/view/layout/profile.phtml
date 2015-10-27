@@ -1,0 +1,81 @@
+<div class="wrapper wrapper-content">
+    <div class="row animated fadeInRight">
+        <div class="col-md-4">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Profile Detail</h5>
+                </div>
+                <div>
+                    <div class="ibox-content no-padding border-left-right">
+                        <img alt="image" class="img-responsive" src="<?php echo $this->zfcUserIdentity()->getPicture() ?>">
+                    </div>
+                    <div class="ibox-content profile-content">
+                        <h4><strong> <?php if(!$this->zfcUserIdentity()): ?>
+                                    <!-- display the login form -->
+                                    <?php echo $this->zfcUserLoginWidget(array('redirect'=>'application')); ?>
+                                <?php else: ?>
+                                    <!-- display the 'display name' of the user -->
+                                    <?php echo $this->zfcUserIdentity()->getDisplayname(); ?>
+                                <?php endif?> </h2></strong></h4>
+                        <p><i class="fa fa-map-marker"></i> <?php echo $this->zfcUserIdentity()->getCountry(); ?></p>
+                        <h5>
+                            About me
+                        </h5>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitat.
+                        </p>
+                        <div class="row m-t-lg">
+                            <div class="col-md-4">
+                                <span class="bar">513</span>
+                                <h5><strong></strong> Win</h5>
+                            </div>
+                            <div class="col-md-4">
+                                <span class="line">3</span>
+                                <h5><strong></strong> Following</h5>
+                            </div>
+                            <div class="col-md-4">
+                                <span class="bar">0</span>
+                                <h5><strong></strong> Sent</h5>
+                            </div>
+                        </div>
+                        <div class="user-button" style="align-content: center">
+                            <div class="row">
+                                <div class="col-md-6" ">
+                                    <button type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-envelope" ></i> Send Message</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-lg-4" ">
+            <div class="widget lazur-bg p-xl" >
+
+                        <h2>
+                            <?php echo $this->zfcUserIdentity()->getDisplayname(); ?>
+                        </h2>
+                        <ul class="list-unstyled m-t-md">
+                            <li>
+                                <span class="fa fa-envelope m-r-xs"></span>
+                                <label>Email:</label>
+                                <?php echo $this->zfcUserIdentity()->getEmail(); ?>
+                            </li>
+                            <li>
+                                <span class="fa fa-home m-r-xs"></span>
+                                <label>Country:</label>
+                                <?php echo $this->zfcUserIdentity()->getCountry(); ?>
+                            </li>
+                            <li>
+                                <span class="fa fa-phone m-r-xs"></span>
+                                <label>Contact:</label>
+                                <?php echo $this->zfcUserIdentity()->getPhoneno(); ?>
+                            </li>
+                        </ul>
+
+            </div>
+        </div>
+
+

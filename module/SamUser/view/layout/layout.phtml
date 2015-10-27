@@ -1,36 +1,118 @@
 <?php echo $this->doctype(); ?>
 
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <?php echo $this->headTitle('ZF2 '. $this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false) ?>
+<head>
+    <meta charset="utf-8">
+    <?php echo $this->headTitle('Deeplife '. $this->translate('1.0'))->setSeparator(' - ')->setAutoEscape(false) ?>
 
-        <?php echo $this->headMeta()
-            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
-            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
-        ?>
+    <?php echo $this->headMeta()
+        ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+        ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+    ?>
 
-        <!-- Le styles -->
-        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
-                        ->prependStylesheet($this->basePath('css/style.css'))
-                        ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
-                        ->prependStylesheet($this->basePath('css/bootstrap.min.css')) ?>
+    <!-- Le styles -->
+    <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+        ->prependStylesheet($this->basePath('dash/css/style.css'))
+        ->prependStylesheet($this->basePath('dash/css/animate.css'))
+        ->prependStylesheet($this->basePath('dash/font-awesome/css/font-awesome.cs'))
+        ->prependStylesheet($this->basePath('dash/css/bootstrap-theme.min.css'))
+        ->prependStylesheet($this->basePath('dash/css/bootstrap.min.css')) ?>
 
-        <!-- Scripts -->
-        <?php echo $this->headScript()
-            ->prependFile($this->basePath('js/bootstrap.min.js'))
-            ->prependFile($this->basePath('js/jquery.min.js'))
-            ->prependFile($this->basePath('js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
-            ->prependFile($this->basePath('js/html5shiv.min.js'),   'text/javascript', array('conditional' => 'lt IE 9',))
-        ; ?>
+    <!-- Scripts -->
+    <?php echo $this->headScript()
+        ->prependFile($this->basePath('dash/js/jquery-2.1.1.js'))
+        ->prependFile($this->basePath('dash/js/plugins/metisMenu/jquery.metisMenu.js'))
+        ->prependFile($this->basePath('dash/js/inspinia.js'))
+        ->prependFile($this->basePath('dash/js/plugins/slimscroll/jquery.slimscroll.min.js'))
+        ->prependFile($this->basePath('dash/js/plugins/pace/pace.min.js'))
+        ->prependFile($this->basePath('dash/js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+        ->prependFile($this->basePath('dash/js/html5shiv.min.js'),   'text/javascript', array('conditional' => 'lt IE 9',))
 
-    </head>
-    <body>
+    ; ?>
 
-            <?php echo $this->content; ?>
-           <h1>sami</h1>
+</head>
+<body>
+<div id="wrapper">
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element"> <span>
+                            <img alt="image" class="img-circle" src="dash/img/profile_small.jpg">
+                             </span>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">
+                                        <!-- Test if the User is connected -->
+                                        <?php if(!$this->zfcUserIdentity()): ?>
+                                            <!-- display the login form -->
+                                            <?php echo $this->zfcUserLoginWidget(array('redirect'=>'application')); ?>
+                                        <?php else: ?>
+                                            <!-- display the 'display name' of the user -->
+                                            <?php echo $this->zfcUserIdentity()->getDisplayname(); ?>
+                                        <?php endif?>
+                                    </strong>
+                             </span> <span class="text-muted text-xs block">Missionarry <b class="caret"></b></span> </span> </a>
+                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                            <li><a href="http://localhost:63342/Dashboard/profile.html">Profile</a></li>
+                            <li><a href="http://localhost:63342/Dashboard/contacts.html">Notifications</a></li>
+                            <li><a href="http://localhost:63342/Dashboard/mailbox.html">Messages</a></li>
+                            <li class="divider"></li>
+                            <li><a href="http://localhost:63342/Dashboard/login.html">Logout</a></li>
+                        </ul>
+                    </div>
+                    <div class="logo-element">
+                        IN+
+                    </div>
+                </li>
+                <li class="active">
+                    <a href="http://localhost:63342/Dashboard/index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse in">
+                        <li class="active"><a href="http://localhost:63342/Dashboard/index.html">Dashboard v.1</a></li>
+                        <li><a href="http://localhost:63342/Dashboard/dashboard_2.html">Settings</a></li>
 
-        </div> <!-- /container -->
-        <?php echo $this->inlineScript() ?>
-    </body>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Desciples</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="http://localhost:63342/Dashboard/graph_flot.html">Add</a></li>
+                        <li><a href="http://localhost:63342/Dashboard/graph_morris.html">List</a></li>
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="http://deeplife.cccsea.org/#/layouts%20target="><i class="fa fa-magic"></i> <span class="nav-label">Win </span><span class="label label-info pull-right">62</span></a>
+                </li>
+                <li>
+                    <a target="_blank" href="http://deeplife.cccsea.org/#/widgets"><i class="fa fa-magic"></i> <span class="nav-label">Build</span><span class="label label-info pull-right">62</span></a>
+                </li>
+                <li>
+                    <a target="_blank" href="http://deeplife.cccsea.org/#/grid_options"><i class="fa fa-magic"></i> <span class="nav-label">Send</span><span class="label label-info pull-right">62</span></a>
+                </li>
+                <li class="special_link">
+                    <a href="http://localhost:63342/Dashboard/index.html"><i class="fa fa-database"></i> <span class="nav-label">Tree</span></a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <div id="page-wrapper" class="gray-bg">
+        <!--top navigation-->
+        <?php echo $this->partial('rnav'); ?>
+        <?php echo $this->partial('headtitle'); ?>
+        <?php echo $this->partial('footer'); ?>
+
+
+
+    </div>
+    <?php echo $this->content; ?>
+
+
+</div> <!-- /container -->
+<?php echo $this->inlineScript() ?>
+
+</body>
 </html>
