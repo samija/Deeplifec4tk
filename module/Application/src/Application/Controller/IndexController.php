@@ -20,6 +20,15 @@ class IndexController extends AbstractActionController
         $view = new ViewModel(array(
             'imageurl' => '',
             'Url' => '/',
+            'title' => 'Add Disciples',
+        ));
+        return $view;
+    }
+//    userdashboard
+    Public function userdashboardAction()
+    {
+        $view = new ViewModel(array(
+            'Url' => '/',
             'title' => 'User Dashboard',
         ));
         return $view;
@@ -30,7 +39,7 @@ class IndexController extends AbstractActionController
     {
         $view = new ViewModel(array(
             'Url' => '/',
-            'title' => 'List Disciples',
+            'title' => 'Your Disciples',
         ));
         return $view;
     }
