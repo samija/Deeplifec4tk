@@ -14,8 +14,43 @@ use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
 {
-    public function indexAction()
+    // add disciple
+    Public function indexAction()
     {
-        return new ViewModel();
+        $view = new ViewModel(array(
+            'imageurl' => '',
+            'Url' => '/',
+            'title' => 'Add Disciples',
+        ));
+        return $view;
+    }
+//    userdashboard
+    Public function userdashboardAction()
+    {
+        $view = new ViewModel(array(
+            'Url' => '/',
+            'title' => 'User Dashboard',
+        ));
+        return $view;
+    }
+
+    //list disciples
+    Public function listdiscipleAction()
+    {
+        $view = new ViewModel(array(
+            'Url' => '/',
+            'title' => 'Your Disciples',
+        ));
+        return $view;
+    }
+
+    //update user info
+    Public function updateinfoAction()
+    {
+        $view = new ViewModel(array(
+            'Url' => '/',
+            'title' => 'Update Your Information',
+        ));
+        return $view;
     }
 }

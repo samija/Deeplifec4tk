@@ -107,7 +107,7 @@ return array(
                 array('route' => 'zfcuser/register', 'roles' => array('guest', 'user')),
 
                 // Below is the default index action used by the ZendSkeletonApplication
-                array('route' => 'home', 'roles' => array('user')),
+                array('route' => 'home', 'roles' => array('guest', 'user')),
                 array('route' => 'application', 'roles' => array('guest', 'user')),
                 array('route' => 'application/default', 'roles' => array('guest', 'user')), // Change language
 

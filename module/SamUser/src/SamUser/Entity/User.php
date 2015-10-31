@@ -71,27 +71,6 @@ class User implements UserInterface, ProviderInterface
      */
     protected $firstName = null;
 
-    /**
-     * @var string
-     * @ORM\Column(type="string", length=100, nullable=true)
-     *
-     * @ZFA\Filter({"name":"StringTrim"})
-     * @ZFA\Required(true)
-     * @ZFA\Validator({"name":"StringLength", "options":{"min":1, "max":100}})
-     * @ZFA\Attributes({"type":"text", "placeholder":"frezer"})
-     * @ZFA\Options({"label":"middle Name"})
-     */
-    protected $middleName = null;
-    /**
-     * @var string
-     * @ORM\Column(type="string", length=100, nullable=true)
-     *
-     * @ZFA\Filter({"name":"StringTrim"})
-     * @ZFA\Required(true)
-     * @ZFA\Validator({"name":"StringLength", "options":{"min":1, "max":100}})
-     * @ZFA\Attributes({"type":"text", "placeholder":"Tadesse"})
-     * @ZFA\Options({"label":"sure Name"})
-     */
     protected $sureName = null;
     /**
      * @var string
@@ -125,11 +104,11 @@ class User implements UserInterface, ProviderInterface
      * @ZFA\Required(true)
      * @ZFA\Validator({"name":"StringLength", "options":{"min":1, "max":100}})
      * @ZFA\Attributes({"type":"text", "placeholder":"0916587396"})
-     * @ZFA\Options({"label":"phone number"})
+     * @ZFA\Options({"label":"pment id"})
      */
     protected $mentor_id = null;
     /**
-     * @var string
+     * @var int
      * @ORM\Column(type="string", length=100, nullable=true)
      * * @ZFA\Filter({"name":"StringTrim"})
      * @ZFA\Required(true)
@@ -211,42 +190,6 @@ class User implements UserInterface, ProviderInterface
     public function setPhoneNo($phone_no)
     {
         $this->phone_no = $phone_no;
-    }
-
-    /**
-     * @return string
-     */
-    public function getMiddleName()
-    {
-        return $this->middleName;
-    }
-
-    /**
-     * @param string $middleName
-     */
-    public function setMiddleName($middleName)
-    {
-        $this->middleName = $middleName;
-        $this->setDisplayName("{$this->firstName} {$this->middleName}");
-
-    }
-
-    /**
-     * @return string
-     */
-    public function getSureName()
-    {
-        return $this->sureName;
-    }
-
-    /**
-     * @param string $sureName
-     *
-     * @return void|\ZfcUser\Entity\UserInterface
-     */
-    public function setSureName($sureName)
-    {
-        $this->sureName = $sureName;
     }
 
     /**
@@ -375,7 +318,7 @@ class User implements UserInterface, ProviderInterface
     {
         $this->firstName = $firstName;
 
-        $this->setDisplayName("{$this->firstName} {$this->middleName}");
+        $this->setDisplayName("{$this->firstName}");
 
         return $this;
     }
@@ -388,7 +331,7 @@ class User implements UserInterface, ProviderInterface
      */
     public function getDisplayName()
     {
-        return $this->displayName ? $this->displayName : "{$this->firstName} {$this->middleName}";
+        return $this->displayName ? $this->displayName : "{$this->firstName}}";
     }
 
     /**

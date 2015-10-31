@@ -28,6 +28,7 @@ class UsersController extends AbstractActionController
      * User list / default action
      */
     public function indexAction() {
+
         // TODO: We need support for deeper children
         $roles = $this->getEntityManager()->getRepository('SamUser\Entity\Role')->findAll();
         $parents = array_filter($roles, array($this, "filterParent"));
