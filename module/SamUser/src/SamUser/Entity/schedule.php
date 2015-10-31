@@ -132,7 +132,7 @@ class Schedule implements UserInterface, ProviderInterface
      */
     public function getId()
     {
-        return $this->user_Idid;
+        return $this->user_Id;
     }
 
     /**
@@ -250,7 +250,7 @@ class Schedule implements UserInterface, ProviderInterface
      *
      * @return string password
      */
-    public function getPassword()
+        public function getPassword()
     {
         // TODO: Implement getPassword() method.
     }

@@ -121,6 +121,7 @@ return array(
             'SamUser\Controller\Dashboard' => 'SamUser\Controller\DashboardController',
         ),
     ),
+
     'view_manager' => array(
         'template_path_stack' => array(
             __DIR__ . '/../view',
@@ -164,6 +165,9 @@ return array(
             ),
         ),
     ),
+    'samuser' => array(
+        'samuser_mapper' => 'SamUser\Mapper\UserZendDb',
+    )
 );
 
 

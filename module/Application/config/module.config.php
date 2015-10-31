@@ -62,6 +62,7 @@ return array(
         'factories' => array(
             'translator' => 'Zend\Mvc\Service\TranslatorServiceFactory',
         ),
+
     ),
     'translator' => array(
         'locale' => 'en_US',

@@ -33,12 +33,12 @@ return array(
             /* here, 'guest' and 'user are defined as top-level roles, with
              * 'admin' inheriting from user
              */
-            /*'BjyAuthorize\Provider\Role\Config' => array(
+            'BjyAuthorize\Provider\Role\Config' => array(
                 'guest' => array(),
                 'user'  => array('children' => array(
                     'admin' => array(),
                 )),
-            ),*/
+            ),
         ),
 
         // resource providers provide a list of resources that will be tracked
@@ -105,6 +105,9 @@ return array(
                 array('route' => 'zfcuser/logout', 'roles' => array('user')),
                 array('route' => 'zfcuser/login', 'roles' => array('guest', 'user')),
                 array('route' => 'zfcuser/register', 'roles' => array('guest', 'user')),
+                array('route' => 'admin/default', 'roles' => array('guest', 'user', 'admin')),
+                array('route' => 'admin/user/create', 'roles' => array('guest', 'user', 'admin')),
+                array('route' => 'admin/user/default', 'roles' => array('guest', 'user', 'admin')),
 
                 // Below is the default index action used by the ZendSkeletonApplication
                 array('route' => 'home', 'roles' => array('guest', 'user')),
