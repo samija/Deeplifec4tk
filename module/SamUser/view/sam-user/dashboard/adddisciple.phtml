@@ -8,6 +8,39 @@
 
     <?php echo $this->partial('headtitle'); ?>
 
+    <?php
+    $form = $this->createUserForm;
+    $form->prepare();
+    $form->setAttribute('action', $this->url('zfcadmin/samuser/create'));
+    $form->setAttribute('method', 'post');
+    ?>
+
+    <h1>Create user</h1>
+    <?php echo $this->form()->openTag($form) ?>
+    <dl class="zend_form">
+        <?php foreach ($form as $element): ?>
+            <?php $isButton = $element instanceof Zend\Form\Element\Button; ?>
+            <?php $isCheckbox = $element instanceof Zend\Form\Element\Checkbox || $element->getAttribute('type') == 'checkbox'; ?>
+            <?php if ($element->getLabel() != null && !$isButton): ?>
+                <dt><?php echo $this->formLabel($element) ?></dt>
+            <?php endif ?>
+            <?php if ($isButton): ?>
+                <dd><?php echo $this->formButton($element) ?></dd>
+            <?php elseif ($element instanceof Zend\Form\Element\Select): ?>
+                <dd><?php echo $this->formSelect($element) . $this->formElementErrors($element) ?></dd>
+            <?php elseif ($element instanceof Zend\Form\Element\MultiCheckbox): ?>
+                <dd><?php echo $this->formMultiCheckbox($element) . $this->formElementErrors($element) ?></dd>
+            <?php elseif ($isCheckbox): ?>
+                <dd><?php echo $this->formCheckbox($element) ?></dd>
+            <?php else: ?>
+                <dd><?php echo $this->formInput($element) . $this->formElementErrors($element) ?></dd>
+            <?php endif ?>
+        <?php endforeach ?>
+    </dl>
+    <?php if ($this->redirect): ?>
+        <input type="hidden" name="redirect" value="<?php echo $this->redirect ?>">
+    <?php endif ?>
+    <?php echo $this->form()->closeTag() ?>
 
 
     </div>

@@ -17,7 +17,7 @@ return array(
                 'options' => array(
                     'route'    => '/',
                     'defaults' => array(
-                        'controller' => 'Application\Controller\Index',
+                        'controller' => 'SamUser\Controller\Dashboard',
                         'action'     => 'index',
                     ),
                 ),
@@ -62,6 +62,7 @@ return array(
         'factories' => array(
             'translator' => 'Zend\Mvc\Service\TranslatorServiceFactory',
         ),
+
     ),
     'translator' => array(
         'locale' => 'en_US',
