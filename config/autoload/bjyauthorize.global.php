@@ -128,6 +128,9 @@ return array(
                 array('route' => 'dashboard', 'roles' => array('guest', 'user')),
                 array('route' => 'dashboard/default', 'roles' => array('guest', 'user')),
 
+                // album module
+                array('route' => 'album', 'roles' => array('guest', 'user')),
+                array('route' => 'album/default', 'roles' => array('guest', 'user')),
             ),
         ),
     ),

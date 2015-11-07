@@ -75,7 +75,7 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index' => Controller\IndexController::class
+            'Application\Controller\Index' =>'Application\Controller\IndexController'
         ),
     ),
     'view_manager' => array(
@@ -90,6 +90,7 @@ return array(
             'profile'  => __DIR__ . '/../view/layout/profile.phtml',
             'mentorinfo'  => __DIR__ . '/../view/layout/mentorinfo.phtml',
             'wbsinfo'  => __DIR__ . '/../view/layout/wbsinfo.phtml',
+            'info'  => __DIR__ . '/../view/layout/info.phtml',
             'headtitle'  => __DIR__ . '/../view/layout/headtitle.phtml',
             'headnav'  => __DIR__ . '/../view/layout/headnav.phtml',
             'footer'  => __DIR__ . '/../view/layout/footer.phtml',

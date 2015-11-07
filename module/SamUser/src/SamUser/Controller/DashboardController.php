@@ -11,45 +11,37 @@ namespace SamUser\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use SamUser\Entity\User;
+
 
 class DashboardController  extends AbstractActionController
 {
+    protected $em;
+
+    public function getEntityManager()
+    {
+        if (null === $this->em) {
+            $this->em = $this->getServiceLocator()->get('doctrine.entitymanager.orm_default');
+        }
+        return $this->em;
+    }
     // add disciple
     Public function indexAction()
     {
-        $view = new ViewModel(array(
-            'imageurl' => '',
-            'Url' => '/',
-            'title' => 'User Dashboard',
+
+        return new ViewModel(array(
+            'users' => $this->getEntityManager()->getRepository('SamUser\Entity\User')->findAll(),
+
         ));
-        return $view;
+
     }
 //    Add Disiple
     Public function adddiscipleAction()
     {
-//        $form = new \SamUser\Form\AddUser();
-//        $form->setHydrator(new \Zend\Stdlib\Hydrator\Reflection());
-//        $form->bind(new \SamUser\Entity\User());
 //
-//        if ($this->getRequest()->isPost()) { $form->setData($this->getRequest()->getPost());
-//            if ($form->isValid()) { var_dump($form->getData());
-//            } else {
-//                return new ViewModel(
-//                    array(
-//                        'form' => $form
-//                    )
-//                ); }
-//        } else {
-//            return new ViewModel(
-//                array(
-//                    'form' => $form
-//               ) );
-//        }
-//    }
         $view = new ViewModel(array(
             'Url' => '/',
             'title' => 'Add Disciples',
-            'form' => new \SamUser\Form\AddUser(),
         ));
         return $view;
 
@@ -58,12 +50,12 @@ class DashboardController  extends AbstractActionController
     Public function listdiscipleAction()
     {
         $view = new ViewModel(array(
+            'users' => $this->getEntityManager()->getRepository('SamUser\Entity\User')->findAll(),
             'Url' => '/',
             'title' => 'Your Disciples',
         ));
         return $view;
     }
-
     //update user info
     Public function updateinfoAction()
     {
