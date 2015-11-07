@@ -104,7 +104,7 @@ class User implements UserInterface, ProviderInterface
      * @ZFA\Required(true)
      * @ZFA\Validator({"name":"StringLength", "options":{"min":1, "max":100}})
      * @ZFA\Attributes({"type":"text", "placeholder":"0916587396"})
-     * @ZFA\Options({"label":"pment id"})
+     * @ZFA\Options({"label":"mentor_id"})
      */
     protected $mentor_id = null;
     /**

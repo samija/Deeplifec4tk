@@ -17,6 +17,16 @@ use SamUser\Entity\User;
 class DashboardController  extends AbstractActionController
 {
     protected $em;
+    public $userid;
+
+    public function getMUserId()
+    {
+        if ($this->zfcUserAuthentication()->hasIdentity()) {
+            //get the user_id of the user
+            $this->userid = $this->zfcUserAuthentication()->getIdentity()->getId();
+        }
+        return $this->userid;
+    }
 
     public function getEntityManager()
     {
@@ -28,11 +38,12 @@ class DashboardController  extends AbstractActionController
     // add disciple
     Public function indexAction()
     {
-
         return new ViewModel(array(
-            'users' => $this->getEntityManager()->getRepository('SamUser\Entity\User')->findAll(),
-
+            'users' => $this->getEntityManager()->getRepository('SamUser\Entity\User')->findBy(array('mentor_id' => $this ->userid = $this->getMUserId())),
+            'Url' => '/',
+            'title' => 'Your Dashboard',
         ));
+
 
     }
 //    Add Disiple
@@ -50,7 +61,7 @@ class DashboardController  extends AbstractActionController
     Public function listdiscipleAction()
     {
         $view = new ViewModel(array(
-            'users' => $this->getEntityManager()->getRepository('SamUser\Entity\User')->findAll(),
+            'users' => $this->getEntityManager()->getRepository('SamUser\Entity\User')->findBy(array('mentor_id' => $this ->userid = $this->getMUserId())),
             'Url' => '/',
             'title' => 'Your Disciples',
         ));
