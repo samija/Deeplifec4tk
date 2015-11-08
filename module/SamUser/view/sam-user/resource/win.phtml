@@ -9,12 +9,6 @@
         <?php echo $this->partial('profile'); ?>
 
 
-        $file= $this->paramfile;
-        header (“Content-type: octet/stream”);
-        header (“Content-disposition: attachment; filename=”.$file.“;”);
-        header(“Content-Length: “.filesize($file));
-        readfile($file);
-
 
     </div>
     <?php echo $this->partial('footer'); ?>

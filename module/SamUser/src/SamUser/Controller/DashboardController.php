@@ -12,7 +12,6 @@ namespace SamUser\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use SamUser\Entity\User;
-use ZfcUser\Form\AddUser;
 
 
 class DashboardController  extends AbstractActionController
@@ -50,33 +49,14 @@ class DashboardController  extends AbstractActionController
 //    Add Disiple
     Public function adddiscipleAction()
     {
-        $form = new AddUser();
-
-        return array('form' => $form);
-
 //
-//        $view = new ViewModel(array(
-//            'Url' => '/',
-//            'title' => 'Add Disciples',
-//        ));
-//        return $view;
-
-    }
-
-    public function disciple()
-    {
-        $id = (int) $this->params()->fromRoute('id', 0);
-        if (!$id) {
-            return $this->redirect()->toRoute('dashboard');
-        }
         $view = new ViewModel(array(
-            'users' => $this->getEntityManager()->getRepository('SamUser\Entity\User')->findall(),
             'Url' => '/',
-            'title' => 'Yoursa Disciples',
+            'title' => 'Add Disciples',
         ));
+        return $view;
 
     }
-
     //list disciples
     Public function listdiscipleAction()
     {

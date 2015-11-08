@@ -40,7 +40,7 @@ return array(
                 ),
                 'may_terminate' => true,
                 'child_routes' => array(
-                    'adddisciple' => array(
+                        'adddisciple' => array(
                             'type' => 'Literal',
                             'options' => array(
                                 'route' => '/adddisciple',
@@ -70,10 +70,11 @@ return array(
                             ),
                         ),
                     ),
-                    'disciple' => array(
+
+                    'default' => array(
                         'type'    => 'Segment',
                         'options' => array(
-                            'route'    => 'dashboard/[:action[/:id]]',
+                            'route'    => '/[:action[/:id]]',
                             'constraints' => array(
                                 'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'id'     => '[0-9]+',
@@ -96,16 +97,66 @@ return array(
                 ),
                 'may_terminate' => true,
                 'child_routes' => array(
-                        'winresource' => array(
-                            'type' => 'Literal',
-                            'options' => array(
-                                'route' => '/winresource',
-                                'defaults' => array(
-                                    'controller' => 'resource',
-                                    'action'     => 'download',
-                                ),
+                    'download1' => array(
+                        'type' => 'Literal',
+                        'options' => array(
+                            'route' => '/download1',
+                            'defaults' => array(
+                                'controller' => 'resource',
+                                'action'     => 'download1',
                             ),
                         ),
+                    ),
+                    'download2' => array(
+                        'type' => 'Literal',
+                        'options' => array(
+                            'route' => '/download2',
+                            'defaults' => array(
+                                'controller' => 'resource',
+                                'action'     => 'download2',
+                            ),
+                        ),
+                    ),
+                    'download3' => array(
+                        'type' => 'Literal',
+                        'options' => array(
+                            'route' => '/download3',
+                            'defaults' => array(
+                                'controller' => 'resource',
+                                'action'     => 'download3',
+                            ),
+                        ),
+                    ),
+                    'download4' => array(
+                        'type' => 'Literal',
+                        'options' => array(
+                            'route' => '/download4',
+                            'defaults' => array(
+                                'controller' => 'resource',
+                                'action'     => 'download4',
+                            ),
+                        ),
+                    ),
+                    'download5' => array(
+                        'type' => 'Literal',
+                        'options' => array(
+                            'route' => '/download5',
+                            'defaults' => array(
+                                'controller' => 'resource',
+                                'action'     => 'download5',
+                            ),
+                        ),
+                    ),
+                    'download6' => array(
+                        'type' => 'Literal',
+                        'options' => array(
+                            'route' => '/download6',
+                            'defaults' => array(
+                                'controller' => 'resource',
+                                'action'     => 'download6',
+                            ),
+                        ),
+                    ),
                     'listdisciple' => array(
                         'type' => 'Literal',
                         'options' => array(
@@ -167,15 +218,16 @@ return array(
                     ),
                 ),
             ),
-
         ),
-    ),
+        ),
+
     'controllers' => array(
         'invokables' => array(
             'SamUser\Controller\Users' => 'SamUser\Controller\UsersController',
             'SamUser\Controller\Roles' => 'SamUser\Controller\RolesController',
             'SamUser\Controller\Dashboard' => 'SamUser\Controller\DashboardController',
            'SamUser\Controller\resource' => 'SamUser\Controller\resourceController',
+
         ),
     ),
     'view_manager' => array(

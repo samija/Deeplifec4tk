@@ -25,7 +25,6 @@
             <table class="table"style="table-layout: auto">
 
                  <tr class="ibox-title" >
-            <th>Picture</th>
             <th>Name</th>
             <th>Email</th>
             <th>Phone</th>
@@ -35,8 +34,7 @@
 
                 <?php foreach ($users as $user) : ?>
             <tr>
-                <td><img alt="image" class="img-circle" style="ima" src="<?php echo $this->escapeHtml($user->getPicture());?>"</td>
-                <td style="content: '';"><?php echo $this->escapeHtml($user->getDisplayname());?></td>
+                <td><?php echo $this->escapeHtml($user->getDisplayname());?></td>
                 <td><?php echo $this->escapeHtml($user->getEmail());?></td>
                 <td><?php echo $this->escapeHtml($user->getPhoneNo());?></td>
                 <td><?php echo $this->escapeHtml($user->getCountry());?></td>
