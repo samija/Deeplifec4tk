@@ -40,7 +40,7 @@ return array(
                 ),
                 'may_terminate' => true,
                 'child_routes' => array(
-                        'adddisciple' => array(
+                    'adddisciple' => array(
                             'type' => 'Literal',
                             'options' => array(
                                 'route' => '/adddisciple',
@@ -70,11 +70,10 @@ return array(
                             ),
                         ),
                     ),
-
-                    'default' => array(
+                    'disciple' => array(
                         'type'    => 'Segment',
                         'options' => array(
-                            'route'    => '/[:action[/:id]]',
+                            'route'    => 'dashboard/[:action[/:id]]',
                             'constraints' => array(
                                 'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'id'     => '[0-9]+',
