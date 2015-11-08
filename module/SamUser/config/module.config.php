@@ -85,6 +85,63 @@ return array(
                     ),
                 ),
             ),
+            'resource' => array(
+                'type'    => 'Literal',
+                'options' => array(
+                    'route'    => '/resource',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'SamUser\Controller',
+                        'controller'    => 'resource',
+                        'action'        => 'index',
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                        'winresource' => array(
+                            'type' => 'Literal',
+                            'options' => array(
+                                'route' => '/winresource',
+                                'defaults' => array(
+                                    'controller' => 'resource',
+                                    'action'     => 'download',
+                                ),
+                            ),
+                        ),
+                    'listdisciple' => array(
+                        'type' => 'Literal',
+                        'options' => array(
+                            'route' => '/listdisciple   ',
+                            'defaults' => array(
+                                'controller' => 'dashboard',
+                                'action'     => 'listdisciple',
+                            ),
+                        ),
+                    ),
+                    'updateinfo' => array(
+                        'type' => 'Literal',
+                        'options' => array(
+                            'route' => '/updateinfo',
+                            'defaults' => array(
+                                'controller' => 'dashboard',
+                                'action'     => 'updateinfo',
+                            ),
+                        ),
+                    ),
+
+                    'default' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:action[/:id]]',
+                            'constraints' => array(
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'id'     => '[0-9]+',
+                            ),
+                            'defaults' => array(
+                            ),
+                        ),
+                    ),
+                ),
+            ),
             'roles' => array(
                 'type'    => 'Literal',
                 'options' => array(
@@ -119,6 +176,7 @@ return array(
             'SamUser\Controller\Users' => 'SamUser\Controller\UsersController',
             'SamUser\Controller\Roles' => 'SamUser\Controller\RolesController',
             'SamUser\Controller\Dashboard' => 'SamUser\Controller\DashboardController',
+           'SamUser\Controller\resource' => 'SamUser\Controller\resourceController',
         ),
     ),
     'view_manager' => array(
