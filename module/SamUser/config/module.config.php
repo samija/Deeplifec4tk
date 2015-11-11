@@ -1,5 +1,6 @@
 <?php
 return array(
+
     'router' => array(
         'routes' => array(
             'users' => array(
@@ -226,7 +227,7 @@ return array(
             'SamUser\Controller\Users' => 'SamUser\Controller\UsersController',
             'SamUser\Controller\Roles' => 'SamUser\Controller\RolesController',
             'SamUser\Controller\Dashboard' => 'SamUser\Controller\DashboardController',
-           'SamUser\Controller\resource' => 'SamUser\Controller\resourceController',
+           'SamUser\Controller\Resource' => 'SamUser\Controller\ResourceController',
 
         ),
     ),

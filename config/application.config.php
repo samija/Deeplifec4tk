@@ -16,6 +16,7 @@ return array(
         'ZfcUser',
         'ZfcUserDoctrineORM',
         'BjyAuthorize',
+        'RoleUserBridge',
         'SamUser',
     ),
 
