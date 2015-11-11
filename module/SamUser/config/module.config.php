@@ -92,7 +92,7 @@ return array(
                     'route'    => '/resource',
                     'defaults' => array(
                         '__NAMESPACE__' => 'SamUser\Controller',
-                        'controller'    => 'resource',
+                        'controller'    => 'Resource',
                         'action'        => 'index',
                     ),
                 ),
@@ -193,6 +193,33 @@ return array(
                     ),
                 ),
             ),
+            'tree' => array(
+                'type'    => 'Literal',
+                'options' => array(
+                    'route'    => '/tree',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'SamUser\Controller',
+                        'controller'    => 'Tree',
+                        'action'        => 'index',
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+
+                    'default' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:action[/:id]]',
+                            'constraints' => array(
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'id'     => '[0-9]+',
+                            ),
+                            'defaults' => array(
+                            ),
+                        ),
+                    ),
+                ),
+            ),
             'roles' => array(
                 'type'    => 'Literal',
                 'options' => array(
@@ -228,6 +255,7 @@ return array(
             'SamUser\Controller\Roles' => 'SamUser\Controller\RolesController',
             'SamUser\Controller\Dashboard' => 'SamUser\Controller\DashboardController',
            'SamUser\Controller\Resource' => 'SamUser\Controller\ResourceController',
+           'SamUser\Controller\Tree' => 'SamUser\Controller\TreeController',
 
         ),
     ),

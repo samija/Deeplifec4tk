@@ -133,9 +133,9 @@ return array(
                 array('route' => 'resource', 'roles' => array('guest', 'user')),
                 array('route' => 'resource/default', 'roles' => array('guest', 'user')),
 
-                // album module
-                array('route' => 'album', 'roles' => array('guest', 'user')),
-                array('route' => 'album/default', 'roles' => array('guest', 'user')),
+                // tree module
+                array('route' => 'tree', 'roles' => array('guest', 'user')),
+                array('route' => 'tree/default', 'roles' => array('guest', 'user')),
             ),
         ),
     ),
