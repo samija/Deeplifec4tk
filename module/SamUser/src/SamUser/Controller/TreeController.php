@@ -19,7 +19,7 @@ class TreeController extends AbstractActionController
     Public function indexAction()
     {
         return new ViewModel(array(
-            
+
             'Url' => '/',
             'title' => 'Generation Tree',
         ));

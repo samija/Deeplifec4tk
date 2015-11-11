@@ -93,6 +93,7 @@ return array(
             'info'  => __DIR__ . '/../view/layout/info.phtml',
             'headtitle'  => __DIR__ . '/../view/layout/headtitle.phtml',
             'headnav'  => __DIR__ . '/../view/layout/headnav.phtml',
+            'tree'  => __DIR__ . '/../view/layout/tree.phtml',
             'footer'  => __DIR__ . '/../view/layout/footer.phtml',
             'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',

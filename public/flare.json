@@ -1,0 +1,205 @@
+{
+    "name": "flare",
+    "icon": "http://vignette2.wikia.nocookie.net/rift/images/7/7f/AWESOME_FACE!!!.png",
+    "immediate": "12",
+    "total": "500",
+    "url":"2",
+    "children": [
+        {
+            "name": "analytics",
+            "icon": "avatar2.png",
+            "immediate": "12",
+            "total": "500",
+            "url":"http://google.com",
+            "children": [
+                {
+                    "name": "cluster",
+                    "icon": "avatar3.png",
+                    "immediate": "12",
+                    "total": "500",
+                    "url":"3"
+
+                },
+                {
+                    "name": "graph",
+                    "icon": "avatar4.png",
+                    "immediate": "12",
+                    "total": "500"
+                },
+                {
+                    "name": "optimization",
+                    "icon": "avatar5.png",
+                    "immediate": "12",
+                    "total": "500",
+                    "url":"http://google.com"
+                }
+            ]
+        },
+        {
+            "name": "animate",
+            "icon": "avatar6.png",
+            "immediate": "12",
+            "total": "500",
+            "children": [
+                {
+                    "name": "Easing",
+                    "icon": "avatar7.png",
+                    "immediate": "12",
+                    "total": "500",
+                    "size": 17010
+                },
+                {
+                    "name": "FunctionSequence",
+                    "icon": "avatar8.png",
+                    "immediate": "12",
+                    "total": "500",
+                    "size": 5842
+                },
+                {
+                    "name": "interpolate",
+                    "icon": "avatar9.png",
+                    "immediate": "12",
+                    "total": "500",
+                    "size": 1041
+
+                },
+                {
+                    "name": "ISchedulable",
+                    "icon": "avatar2.png",
+                    "immediate": "12",
+                    "total": "500",
+                    "size": 1041
+                },
+                {
+                    "name": "Parallel",
+                    "icon": "avatar4.png",
+                    "immediate": "12",
+                    "total": "500",
+                    "size": 5176
+                }
+            ]
+        },
+        {
+            "name": "data",
+            "icon": "avatar3.png",
+            "immediate": "12",
+            "total": "500",
+            "children": [
+                {
+                    "name": "converters",
+                    "icon": "avatar9.png",
+                    "immediate": "12",
+                    "total": "500"
+                },
+                {
+                    "name": "DataField",
+                    "icon": "avatar8.png",
+                    "immediate": "12",
+                    "total": "500",
+                    "size": 1759
+                },
+                {
+                    "name": "DataSchema",
+                    "icon": "avatar7.png",
+                    "immediate": "12",
+                    "total": "500",
+                    "size": 2165
+                },
+                {
+                    "name": "DataSet",
+                    "icon": "avatar4.png",
+                    "immediate": "12",
+                    "total": "500",
+                    "size": 586
+                },
+                {
+                    "name": "DataSource",
+                    "icon": "avatar2.png",
+                    "immediate": "12",
+                    "total": "500",
+                    "size": 3331
+                }
+            ]
+        },
+        {
+            "name": "display",
+            "icon": "avatar5.png",
+            "immediate": "12",
+            "total": "500",
+            "children": [
+                {
+                    "name": "DirtySprite",
+                    "icon": "avatar3.png",
+                    "immediate": "12",
+                    "total": "500",
+                    "size": 8833
+                },
+                {
+                    "name": "LineSprite",
+                    "icon": "avatar7.png",
+                    "immediate": "12",
+                    "total": "500",
+                    "size": 1732
+                },
+                {
+                    "name": "RectSprite",
+                    "icon": "avatar4.png",
+                    "immediate": "12",
+                    "total": "500",
+                    "size": 3623
+                },
+                {
+                    "name": "TextSprite",
+                    "icon": "avatar6.png",
+                    "immediate": "12",
+                    "total": "500",
+                    "size": 10066
+                }
+            ]
+        },
+        {
+            "name": "flex",
+            "icon": "../img/avatar1.png",
+            "immediate": "12",
+            "total": "500",
+            "children": [
+                {
+                    "name": "FlareVis",
+                    "icon": "avatar8.png",
+                    "immediate": "12",
+                    "total": "500",
+                    "size": 4116
+                },
+                {
+                    "name": "DragForce",
+                    "icon": "avatar9.png",
+                    "immediate": "12",
+                    "total": "500",
+                    "size": 1082
+                },
+                {
+                    "name": "GravityForce",
+                    "icon": "avatar2.png",
+                    "immediate": "12",
+                    "total": "500",
+                    "size": 1336
+                },
+                {
+                    "name": "IForce",
+                    "icon": "avatar5.png",
+                    "immediate": "12",
+                    "total": "500",
+                    "size": 319
+                },
+                {
+                    "name": "NBodyForce",
+                    "icon": "avatar3.png",
+                    "immediate": "12",
+                    "total": "500",
+                    "size": 10498
+                }
+            ]
+        }
+    ]
+
+}
