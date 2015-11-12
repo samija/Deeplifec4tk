@@ -38,6 +38,16 @@ class DashboardController  extends AbstractActionController
     // add disciple
     Public function indexAction()
     {
+        $tree = array();
+        foreach($userid = $this->getMUserId() as $parent){
+            $tree[$parent->name] = array();
+            foreach($userid as $child){
+                if($child->parent_id == $parent->id){
+                    $tree[$parent->name][] = $child->name;
+                }
+            }
+        }
+
         return new ViewModel(array(
             'users' => $this->getEntityManager()->getRepository('SamUser\Entity\User')->findBy(array('mentor_id' => $this ->userid = $this->getMUserId())),
             'Url' => '/',
