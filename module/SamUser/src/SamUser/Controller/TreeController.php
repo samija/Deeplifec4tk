@@ -52,10 +52,13 @@ class TreeController extends AbstractActionController
     public function jsonAction()
     {
         $queryBuilder = $this->getEntityManager()->createQueryBuilder();
-        $queryBuilder->select('u')
-            ->from('SamUser\Entity\User', 'u');
+        $queryBuilder->select(ARRAY('u'))
+            ->from('SamUser\Entity\User', 'u')
+        ->where('country = ?Ethiopia');
+
 
         $results = $queryBuilder->getQuery()
+
             ->getResult(\Doctrine\ORM\AbstractQuery::HYDRATE_ARRAY);
 
         return new JsonModel($results);
@@ -64,3 +67,5 @@ class TreeController extends AbstractActionController
 
 
 }
+
+
