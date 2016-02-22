@@ -16,8 +16,12 @@ return array(
         'ZfcUser',
         'ZfcUserDoctrineORM',
         'BjyAuthorize',
-//        'RoleUserBridge',
+//      'RoleUserBridge',
         'SamUser',
+        'News',
+
+
+
     ),
 
     // These are various options for the listeners attached to the ModuleManager

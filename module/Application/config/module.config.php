@@ -63,16 +63,16 @@ return array(
             'translator' => 'Zend\Mvc\Service\TranslatorServiceFactory',
         ),
     ),
-    'translator' => array(
-        'locale' => 'en_US',
-        'translation_file_patterns' => array(
-            array(
-                'type'     => 'gettext',
-                'base_dir' => __DIR__ . '/../language',
-                'pattern'  => '%s.mo',
-            ),
-        ),
-    ),
+//    'translator' => array(
+//        'locale' => 'en_us',
+//        'translation_file_patterns' => array(
+//            array(
+//                'type'     => 'gettext',
+//                'base_dir' => __DIR__ . '/../language',
+//                'pattern'  => '%s.mo',
+//            ),
+//        ),
+//    ),
     'controllers' => array(
         'invokables' => array(
             'Application\Controller\Index' =>'Application\Controller\IndexController'
@@ -98,6 +98,7 @@ return array(
             'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
+            'partial/pagination'      => __DIR__ . '/../view/partial/pagination.phtml',
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',

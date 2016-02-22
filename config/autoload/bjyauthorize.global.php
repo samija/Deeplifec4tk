@@ -12,7 +12,7 @@ return array(
         // set the 'guest' role as default (must be defined in a role provider)
         'default_role' => 'guest',
 
-        'unauthorized_strategy' => 'BjyAuthorize\View\RedirectionStrategy',
+//        'unauthorized_strategy' => 'BjyAuthorize\View\RedirectionStrategy',
 
         /* If you only have a default role and an authenticated role, you can
          * use the 'AuthenticationIdentityProvider' to allow/restrict access
@@ -108,6 +108,7 @@ return array(
 
                 // Below is the default index action used by the ZendSkeletonApplication
                 array('route' => 'home', 'roles' => array('guest', 'user')),
+                array('route' => 'news', 'roles' => array('guest', 'user')),
                 array('route' => 'application', 'roles' => array('guest', 'user')),
                 array('route' => 'application/default', 'roles' => array('guest', 'user')), // Change language
 
@@ -136,6 +137,18 @@ return array(
                 // tree module
                 array('route' => 'tree', 'roles' => array('guest', 'user')),
                 array('route' => 'tree/default', 'roles' => array('guest', 'user')),
+
+                //news module
+                array('route' => 'news', 'roles' => array('guest', 'user')),
+                array('route' => 'news/paged', 'roles' => array('guest', 'user')),
+                array('route' => 'news/posts/:categorySlug/:postSlug', 'roles' => array('guest', 'user')),
+                array('route' => 'edit', 'roles' => array('guest', 'user')),
+                array('route' => 'delete', 'roles' => array('guest', 'user')),
+                array('route' => 'display-post', 'roles' => array('guest', 'user')),
+                array('route' => 'news/default', 'roles' => array('guest', 'user')),
+
+
+
             ),
         ),
     ),
