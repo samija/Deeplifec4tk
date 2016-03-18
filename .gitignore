@@ -71,6 +71,6 @@ composer.phar
 .~lock.*
 .buildpath
 .settings
-
+.zip
 
 
