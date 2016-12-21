@@ -1,0 +1,90 @@
+<?php use Zend\Session\Container; ?>
+<?php echo $this->doctype();?>
+<html lang="en-US" >
+<head>
+    <meta charset="utf-8">
+     <?php echo $this->headTitle('Deeplife '. $this->translate('1.0'))->setSeparator(' - ')->setAutoEscape(false) ?>
+    <?php echo $this->headMeta()
+        ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+        ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+    ?>
+    <!-- Le styles -->
+    <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+        ->prependStylesheet($this->basePath('dash/css/style.css'))
+        ->prependStylesheet($this->basePath('dash/css/animate.css'))
+        ->prependStylesheet($this->basePath('dash/font-awesome/css/font-awesome.css'))
+        ->prependStylesheet($this->basePath('css/bootstrap.min.css')); ?>
+    <!-- Scripts -->
+    <?php echo $this->headScript()
+        ->prependFile($this->basePath('js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))  ->prependFile($this->basePath('js/html5shiv.min.js'),   'text/javascript', array('conditional' => 'lt IE 9',)) ->prependFile($this->basePath('js/bootstrap.min.js'),   'text/javascript', array())
+        ->prependFile($this->basePath('/js/jquery-2.1.1.js'),   'text/javascript', array())
+; ?>
+   
+   
+  
+
+  <link href="http://select2.github.io/select2/select2-3.5.3/select2.css" rel="stylesheet"/>   
+ <link href="http://codeseven.github.io/toastr/build/toastr.min.css" rel="stylesheet" type="text/css" />
+ 
+ </head>
+<body> 
+    <div id="wrapper">
+    <?php echo $this->partial('rnav'); ?>
+        <div id="page-wrapper" class="white-bg">
+         <?php echo $this->partial('headnav'); ?>
+           <?php echo $this->content; ?>
+       <?php echo $this->partial('footer'); ?>
+       </div>
+    </div>
+    <!-- Mainly scripts -->
+   
+    <script src="<?php echo $this->basePath('js/plugins/metisMenu/jquery.metisMenu.js')?>"></script>
+    <script src="<?php echo $this->basePath('js/plugins/slimscroll/jquery.slimscroll.min.js')?>"></script>
+
+    
+    
+    <!-- Custom and plugin javascript -->
+    <script src="<?php echo $this->basePath('js/inspinia.js')?>"></script>
+   
+    <!-- jQuery UI -->
+    <script src="<?php echo $this->basePath('js/plugins/jquery-ui/jquery-ui.min.js')?>"></script>
+
+
+  
+     <script src="http://codeseven.github.io/toastr/build/toastr.min.js"></script>
+      
+    <script src="http://select2.github.io/select2/select2-3.5.3/select2.js"></script>
+     
+    <?php 
+   
+           $session = new Container('message');
+           if($session->offsetExists('success')){
+	      	$flashMessenger= $session->offsetGet('success');
+	       $session->getManager()->getStorage()->clear('message')
+          ?>
+            <script type="text/javascript">
+                toastr["success"]("<?php echo $this->translate($flashMessenger); ?>")
+                toastr.options = {
+                  "closeButton": false,
+                  "debug": true,
+                  "newestOnTop": false,
+                  "progressBar": false,
+                  "positionClass": "toast-top-right",
+                  "preventDuplicates": false,
+                  "onclick": null,
+                  "showDuration": "50000",
+                  "hideDuration": "50000",
+                  "timeOut": "50000",
+                  "extendedTimeOut": "50000",
+                  "showEasing": "swing",
+                  "hideEasing": "linear",
+                  "showMethod": "fadeIn",
+                  "hideMethod": "fadeOut"
+                }
+            </script>
+       <?php } ?>
+ <script>
+        $(document).ready(function() { $("#country").select2(); });
+    </script>
+</body>
+</html>

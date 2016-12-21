@@ -14,7 +14,7 @@
 return array(
     'db' => array(
         'driver' => 'Pdo',
-        'dsn' => 'mysql:dbname=samuser;
+        'dsn' => 'mysql:dbname=deeplife;
         host=localhost',
         'username' => 'root',
         'password' => '',
@@ -22,24 +22,45 @@ return array(
             PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
         ),
     ),
+
+    'roles' => array(
+        'USER' => 1,
+        'SUPERADMIN' => 2,
+        'AREAADMIN' => 3,
+        'COUNTRYADMIN' => 4,
+
+    ),
+
+    'locale' => array(
+        'default' => 'en_US',
+        'available' => array(
+            'de_DE' => 'Deutsch',
+            'nl_NL' => 'Dutch',
+            'en_US' => 'English',
+            'fr_FR' => 'French',
+        ),
+    ),
+
     'doctrine' => array(
         'connection' => array(
             'orm_default' => array(
                 'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
                 'params' => array(
-                    'host'     => '127.0.0.1',
-                    'port'     => '3306',
-                    'user'     => 'root',
+                    'host' => 'localhost',
+                    'port' => '3306',
+                    'user' => 'root',
                     'password' => '',
-                    'dbname'   => 'samuser',
+                    'dbname' => 'deeplife',
                     'driverOptions' => array(1002 => 'SET NAMES utf8')
                 ),
             ),
         ),
     ),
+
     'service_manager' => array(
         'factories' => array(
             'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterServiceFactory',
+
         ),
     ),
 );

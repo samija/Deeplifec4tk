@@ -55,7 +55,7 @@ class User implements UserInterface, ProviderInterface
      * @var string
      * @ORM\Column(type="string", length=200, nullable=true)
      *
-     *@ZFA\Exclude()
+     * @ZFA\Exclude()
      */
     protected $displayName = null;
 
@@ -71,10 +71,9 @@ class User implements UserInterface, ProviderInterface
      */
     protected $firstName = null;
 
-    protected $sureName = null;
     /**
      * @var string
-     * @ORM\Column(type="string", length=100, nullable=true)
+     * @ORM\Column(type="integer")
      *
      * @ZFA\Filter({"name":"StringTrim"})
      * @ZFA\Required(true)
@@ -82,7 +81,7 @@ class User implements UserInterface, ProviderInterface
      * @ZFA\Attributes({"type":"text", "placeholder":"Ethiopia"})
      * @ZFA\Options({"label":"country"})
      */
-    protected $country =null;
+    protected $country = null;
 
     /**
      * @var string
@@ -98,7 +97,7 @@ class User implements UserInterface, ProviderInterface
 
     /**
      * @var string
-     * @ORM\Column(type="string", length=100, nullable=true)
+     * @ORM\Column(type="integer")
      *
      * @ZFA\Filter({"name":"StringTrim"})
      * @ZFA\Required(true)
@@ -107,6 +106,8 @@ class User implements UserInterface, ProviderInterface
      * @ZFA\Options({"label":"mentor_id"})
      */
     protected $mentor_id = null;
+
+
     /**
      * @var int
      * @ORM\Column(type="string", length=100, nullable=true)
@@ -117,7 +118,7 @@ class User implements UserInterface, ProviderInterface
      * @ZFA\Options({"label":"picture"})
      */
 
-    protected $picture  = null;
+    protected $picture = null;
 
     /**
      * @var string
@@ -156,6 +157,7 @@ class User implements UserInterface, ProviderInterface
     {
         $this->roles = new ArrayCollection();
     }
+
     public function toArray()
     {
         return array(
@@ -164,15 +166,15 @@ class User implements UserInterface, ProviderInterface
             'displayName' => $this->getDisplayName(),
             'firstName' => $this->getFirstName(),
             'middleName' => $this->getMiddleName(),
-            'sureName' => $this ->getSureName(),
-            'country' => $this ->getCountry(),
-            'phone_no' => $this ->getPhoneNo(),
-            'picture' => $this -> getPicture(),
-            'state' => $this->getState(),
-            'roles' => array_map(
-                function($r) { return array('id' => $r->getId()); },
-                $this->getRoles()->getValues()
-            )
+            'sureName' => $this->getSureName(),
+            'country' => $this->getCountry(),
+            'phone' => $this->getPhone(),
+            'picture' => $this->getPicture(),
+            //'state' => $this->getState(),
+            //  'roles' => array_map(
+            ///  function($r) { return array('id' => $r->getId()); },
+            // $this->getRoles()->getValues()
+            //)
         );
     }
 
@@ -224,7 +226,8 @@ class User implements UserInterface, ProviderInterface
         $this->country = $country;
     }
 
-    public function __toString() {
+    public function __toString()
+    {
         return "{$this->getDisplayName()} <{$this->getEmail()}>";
     }
 
@@ -247,7 +250,7 @@ class User implements UserInterface, ProviderInterface
      */
     public function setId($id)
     {
-        $this->id = (int) $id;
+        $this->id = (int)$id;
         return $this;
     }
 
@@ -331,7 +334,7 @@ class User implements UserInterface, ProviderInterface
      */
     public function getDisplayName()
     {
-        return $this->displayName ? $this->displayName : "{$this->firstName}}";
+        return $this->displayName ? $this->displayName : "{$this->firstName}";
     }
 
     /**

@@ -1,61 +1,352 @@
-<div>
+<style>
+    .button-small {
+        width: auto;
+        display: inline-block;
+    }
 
-    <?php echo $this->partial('rnav'); ?>
+    .flex {
+        display: flex;
+        flex-wrap: wrap;
+    }
 
-    <?php echo $this->partial('headnav'); ?>
-    <div id="page-wrapper" class="gray-bg">
-        <!--top navigation-->
-        <?php echo $this->partial('headtitle'); ?>
-        <div class="row animated fadeInRight">
-        <?php echo $this ->partial('profile'); ?>
+    .flex .col-lg-4, .flex .col-lg-6 {
+        display: flex;
+    }
 
-        <!--user listing -->
-        <div class="col-lg-6" >
-            <div class="row animated fadeInLeft">
-         <div class="ibox float-e-margins">
-             <p></p>
-             <p>
-             <h1>Your Disciples</h1>
-             </p>
-<p>
-                  <button type="button" class="btn btn-w-m btn-primary">Add Disciple</button>
-</p>
+    .ibox {
+        width: 100%;
+    }
 
-        <div class="ibox-content">
-            <table class="table"style="table-layout: auto">
+</style>
+<div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="widget style1 grey-bg">
+                        <div class="row">
+                            <div class="col-xs-4 text-center">
+                                         <i class="fa-disciples"></i>
+                            </div>
+                            <div class="col-xs-8 text-right">
+                                <span><strong><?php echo $this->translate('DISCIPLES TREE')?> </strong></span>
+                                <h2 class="font-bold"> 
+                                     <?php 
+                                 echo sprintf("%02d",isset($disciples[0]->disciplescount)?$disciples[0]->disciplescount:00);                                          ?>
+                                
+                                
+                                </h2>
+                           <span><?php echo $this->translate('Total Disciples')?></span>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="widget style1 yellow-bg">
+                    <div class="row">
+                        <div class="col-xs-4">
+                          
+                       <i class="fa-win"></i>
+                        </div>
+                        <div class="col-xs-8 text-right">
+                            <span> <strong> <?php echo $this->translate('WIN')?></strong></span>
+                            <h2 class="font-bold">
+                            <?php  if(isset($stage[0]['win'])){echo sprintf("%02d",$stage[0]['win']);  }else { echo '00'; }   ?>
+                           </h2>
+                         <span> <?php echo $this->translate('Aggressively evangelize')?> </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="widget style1  blue-bg">
+                    <div class="row">
+                        <div class="col-xs-4">
+                          <i class="fa-build"></i> 
+                      
+                        </div>
+                        <div class="col-xs-8 text-right">
+                            <span> <strong><?php echo $this->translate('BUILD')?> </strong></span>
+                            <h2 class="font-bold">
+                             <?php  if(isset($stage[0]['build'])){echo sprintf("%02d",$stage[0]['build']);  }else { echo '00'; }   ?>                            
+                            </h2>
+                         <span><?php echo $this->translate('Deeply build')?>  </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="widget style1 green-bg">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <i class="fa-send"></i>
+                        </div>
+                        <div class="col-xs-8 text-right">
+                            <span><strong> <?php echo $this->translate('SEND')?> </strong></span>
+                            <h2 class="font-bold">
+                                      <?php  if(isset($stage[0]['send'])){echo sprintf("%02d",$stage[0]['send']);  }else { echo '00'; }   ?> 
+                                
+                            </h2>
+                        <span><?php echo $this->translate('Urgently multiply')?> </span> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+         
+<div class="row">
+  
+  <div class="col-lg-12">
+  <div class="row flex">
+   <!-- Open Message display on dashboard-->
+    <div class="col-lg-4">
+                                <div class="ibox float-e-margins">
+                                    <div class="ibox-title">
+                                        <h5><i class="fa fa-envelope-o  fa-yellow "></i> Message</h5>
+                                        <div class="ibox-tools">
+        <span class="label label-warning-light"><?php echo $messagesdata['messagesCount'] ?> Messages</span>
+                                           </div>
+                                    </div>
+                                    <div class="ibox-content">
 
-                 <tr class="ibox-title" >
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Country</th>
-            <th>&nbsp;</th>
-             </tr>
+                                        <div>
+                                          <?php if(count($messagesdata['messages'])){?>
+                                          <!--Start of foreach loop-->
+<?php foreach($messagesdata['messages'] as $message ){ ?>
+                <a href="<?php echo $this->url('messaging', array('action' => 'maildetail','id'=>$message['id']))?>" >
+                                            <div class="feed-activity-list">
+                                                <div class="feed-element">
+                                               <span  class="pull-left">
+                              <?php  
+                              $avatar='/avatar/noavatar.jpg';
+   if(strlen($message['picture'])){
+       $avatar=$message['picture'];
+   } 
+   ?>
+                                
+                                 <img alt="image" class="img-circle" src="<?php echo $this->basePath($avatar)?>">
+                                               </span>
+                                                  <div class="media-body ">
+                                                  
+                                 <strong><?php echo ucwords($message['displayName']) ?></strong> <?php echo $message['subject']?> <br>
+                                                        <small class="text-muted">
+                                                            <?php echo $this->escapeHtml(date('g:ia \o\n l jS F Y',strtotime($message['created'])));?>
+                                                        </small>
 
-                <?php foreach ($users as $user) : ?>
-            <tr>
-                <td><?php echo $this->escapeHtml($user->getDisplayname());?></td>
-                <td><?php echo $this->escapeHtml($user->getEmail());?></td>
-                <td><?php echo $this->escapeHtml($user->getPhoneNo());?></td>
-                <td><?php echo $this->escapeHtml($user->getCountry());?></td>
-                <td>
-                    <a >Edit</a>
-                    <a >Delete</a>
-                </td>
-            </tr>
-        <?php endforeach; ?>
-             </table>
+                                                    </div>
+                                                </div>
+
+                                                
+                                            </div></a>
+                                            <?php } ?> <!--End of foreach loop-->
+ <?php }else{ ?>
+                 <div class="feed-activity-list">
+
+                                                <div class="feed-element">
+                                                 <div class="media-body ">
+                                                  <strong>No data available</strong> 
+                                                 </div>
+                                                </div>
+
+                                                
+                                            </div>
+                
+                
+ <?php } ?>
+
+                                            <p class="text-right"><a href="<?php echo $this->url('messaging') ?>" class="btn btn-primary btn-block m-t button-small ">View More</a></p>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+   <!--Message display on dashboard-->
+   <!-- Schedule display on dashboard-->
+    <div class="col-lg-4">
+                                <div class="ibox float-e-margins">
+                                    <div class="ibox-title">
+                                        <h5>
+                                               <i class="fa fa-clock-o  fa-yellow "></i> <span class="nav-label">Schedule</span>
+                                        </h5>
+                                        <div class="ibox-tools">
+                                          </div>
+                                    </div>
+                                    <div class="ibox-content">
+
+                                        <div>
+                                          <?php if(count($schedules)){?>
+                                          <!--Start of foreach loop-->
+<?php foreach($schedules as $schedule ){ ?>
+          
+                                            <div class="feed-activity-list">
+                                                <div class="feed-element">
+                                                <div class="media-body ">
+                                                  
+                                 <strong><?php echo ucwords($schedule['name']) ?></strong> <?php echo $schedule['description']?> <br>
+                                                        <small class="text-muted">
+      
+      
+      <?php echo $this->escapeHtml(date('g:ia \o\n l jS F Y',strtotime($schedule['time'])));?>
+                                                        </small>
+
+                                                    </div>
+                                                </div>
+
+                                                
+                                            </div>
+                                            <?php } ?> <!--End of foreach loop-->
+ <?php }else{ ?>
+                 <div class="feed-activity-list">
+
+                                                <div class="feed-element">
+                                                 <div class="media-body ">
+                                                  <strong>No data available</strong> 
+                                                 </div>
+                                                </div>
+
+                                                
+                                            </div>
+                
+                
+ <?php } ?>
+                    <p class="text-right">  <a href="<?php echo $this->url('schedule') ?>" class="btn btn-primary btn-block m-t button-small ">View More</a> </p>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+   <!--Schedule display on dashboard-->
+   <!-- Recent News display on dashboard-->
+    <div class="col-lg-4">
+                                <div class="ibox float-e-margins">
+                                    <div class="ibox-title">
+                            <h5>
+                         <i class="fa fa-newspaper-o  fa-yellow "></i> <span class="nav-label">News</span>
+                            
+                            </h5>
+                                       
+                                       
+                                       
+                                        <div class="ibox-tools">
+                                          </div>
+                                    </div>
+                                    <div class="ibox-content">
+
+                                        <div>
+                                          <?php if($news){?>
+                                          <!--Start of foreach loop-->
+<?php foreach($news as $new ){ ?>
+              
+                                            <div class="feed-activity-list">
+                                                <div class="feed-element">
+                                                                                               <div class="media-body ">
+                    
+                               <?php echo $this->escapeHtml(ucwords($new['title']));?>
+                                 <br>
+                                   <small class="text-muted">
+          <?php echo $this->escapeHtml(date_format($new['created'], '  l jS F Y'));?>
+                                                        </small>
+
+                                                    </div>
+                                                </div>
+
+                                                
+                                            </div>
+                                            <?php } ?> <!--End of foreach loop-->
+ <?php }else{ ?>
+                 <div class="feed-activity-list">
+
+                                                <div class="feed-element">
+                                                 <div class="media-body ">
+                                                  <strong>No data available</strong> 
+                                                 </div>
+                                                </div>
+
+                                                
+                                            </div>
+                
+                
+ <?php } ?>
+
+                                            <p class="text-right"> <a href="<?php echo $this->url('news') ?>" class="btn btn-primary btn-block m-t button-small ">View More</a></p>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+   <!--Recent News display on dashboard-->
+      <!-- Testimonials display on dashboard-->
+     <div class="col-lg-6">
+                                <div class="ibox float-e-margins">
+                                    <div class="ibox-title">
+                                        <h5>
+                                          <i class="fa fa-quote-left  fa-yellow "></i> <span class="nav-label">Testimonial</span>
+                                        </h5>
+                                        <div class="ibox-tools">
+                                          </div>
+                                    </div>
+                                    <div class="ibox-content">
+
+                                        <div>
+                                          <?php 
+                                      
+                                          if(count($testimonials)){?>
+                                          <!--Start of foreach loop-->
+<?php foreach($testimonials as $testimonial ){ ?>
+                                                           <div class="feed-activity-list">
+                                                <div class="feed-element">
+                                               <span  class="pull-left">
+                                    <?php  
+                              $avatar='/avatar/noavatar.jpg';
+   if(strlen($message['picture'])){
+       $avatar=$message['picture'];
+   } 
+   ?>
+                                
+                                 <img alt="image" class="img-circle" src="<?php echo $this->basePath($avatar)?>">
+                                               </span>
+                                                  <div class="media-body ">
+                                                  
+                                 <strong><?php echo ucwords($testimonial['displayName']) ?></strong> <?php echo $testimonial['description']?> <br>
+                                                        <small class="text-muted">
+                                                            <?php echo $this->escapeHtml(date('g:ia \o\n l jS F Y',strtotime($testimonial['created'])));?>
+                                                        </small>
+
+                                                    </div>
+                                                </div>
+
+                                                
+                                            </div>
+                                            <?php } ?> <!--End of foreach loop-->
+ <?php }else{ ?>
+                 <div class="feed-activity-list">
+
+                                                <div class="feed-element">
+                                                 <div class="media-body ">
+                                                  <strong>No data available</strong> 
+                                                 </div>
+                                                </div>
+
+                                                
+                                            </div>
+                
+                
+ <?php } ?>
+                                            <p class="text-right">          <a href="<?php echo $this->url('testimonial') ?>" class="btn btn-primary  btn-block m-t button-small  ">View More</a></p>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+   <!--Testimonials News display on dashboard-->
+      
+       
        </div>
-
-         </div>
-        </div>
-
-
-        </div>
-        <?php echo $this ->partial('wbsinfo'); ?>
-
-
-        </div>
-        <?php echo $this ->partial('info'); ?>
-    <?php echo $this->partial('footer'); ?>
-</div>
+   </div>
+     </div>
+      

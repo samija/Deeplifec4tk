@@ -1,0 +1,82 @@
+
+<div class=" middle-box text-center white-bg loginscreen animated fadeInDown">
+
+    <div class="ibox-title white-bg">
+        <img class="middle-box col-md-12" src="<?php echo $this->basePath('img/Splashlogo_xhdpi.png')?>">
+        <h2 style="color: white ">Sign Up</h2>
+
+        <?php echo $this->form()->openTag($form) ?>
+        <div class="white-bg">
+            <?php foreach ($form as $element): ?>
+
+                <div class="text-align:center white-bg row form-group <?php if($this->formElementErrors($element)) echo "has-error" ?>">
+                    <label style="text-align:right;color: white;" class="white-bg col-sm-6 control-label"><?php echo $element->getLabel() ?></label>
+                    <div class="col-sm-12" >
+                        <?php echo $this->formElement ( $element );
+                        if ($this->formElementErrors ( $element ))
+                        ?>
+                        <span class="help-inline white-bg "><?php echo $this->formElementErrors($element) ?></span>
+                    </div>
+                </div>
+            <?php endforeach ?>
+            <?php if ($this->redirect): ?>
+                <input type="hidden" name="redirect"  value="<?php echo $this->escapeHtml($this->redirect) ?>" />
+            <?php endif ?>
+            <?php echo $this->form()->closeTag() ?>
+            <h6 style="color: white">Already Have an account ? </h6>
+            <a style="color: #f9c123" href="<?php echo $this->url('zfcuser/login') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>">Login</a>
+        </div>
+
+    </div>
+</div>
+</div>
+<!--</section>-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Deeplife| Register</title>
+
+    <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+//        ->prependStylesheet($this->basePath('css/style.css'))
+        ->prependStylesheet($this->basePath('css/bootstrap.min.css'))
+//        ->prependStylesheet($this->basePath('css/animate.min.css'))
+//        ->prependStylesheet($this->basePath('css/style.min.css'))
+        ->prependStylesheet($this->basePath('css/login_reg.css'))
+        ->prependStylesheet($this->basePath('font-awesome/css/font-awesome.min.css'))
+    ?>
+
+</head>
+
+<body class="white-bg">
+
+
+
+
+</body>
+
+</html>
+<?php echo $this->inlineScript()
+//    ->prependFile($this->basePath('js/pace.min.js'))
+    ->prependFile($this->basePath('js/bootstrap.min.js'))
+//    ->prependFile($this->basePath('js/classie.js'))
+    ->prependFile($this->basePath('js/jquery-2.1.1.js'))
+    ->prependFile($this->basePath('js/plugins/iCheck/icheck.min.js'))
+//    ->prependFile($this->basePath('js/cbpAnimatedHeader.js'))
+//    ->prependFile($this->basePath('js/wow.min.js'));
+//->prependFile($this->basePath('js/inspinia.js'));
+
+?>
+<script>
+    $(document).ready(function(){
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+        });
+    });
+</script>

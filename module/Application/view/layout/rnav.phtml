@@ -1,71 +1,162 @@
-<nav class="navbar-default navbar-static-side" role="navigation">
+<?php 
+   if (!$this->zfcUserIdentity()) {
+    
+     $actual_link = "http://$_SERVER[HTTP_HOST]";
+  header("Location:".$actual_link); /* Redirect browser */
+    /* Make sure that code below does not get executed when we redirect. */
+       exit;
+  }
+  $urlArray=explode('/',$_SERVER['REQUEST_URI']);
+  
 
-    <div class=" animated bounce">
-    <div class="sidebar-collapse">
-        <ul class="nav" id="side-menu">
-            <li class="nav-header">
-                <div class="dropdown profile-element"> <span>
-                            <img alt="image" class="img-circle" style="ima" src="
-                        <?php if(!$this->zfcUserIdentity()): ?>
-                            <?php echo $this->zfcUserLoginWidget(array('redirect'=>'dashboard')); ?>
-                        <?php else: ?>
-                            <?php echo $this->zfcUserIdentity()->getPicture(); ?>
-                        <?php endif?>"
-                             </span>
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="clear"> <span class="block m-t-xs">
-                                          <strong>  <?php echo $this->zfcUserIdentity()->getDisplayname(); ?>
-                                    </strong>
-                             </span> <span class="text-muted text-xs block">Missionarry <b class="caret"></b></span> </span> </a>
-                    <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                        <li><a href="<?php echo $this->url('dashboard/updateinfo') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>">Profile</a></li>
-                        <li><a href="<?php echo $this->url('dashboard/updateinfo') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>">Notifications</a></li>
-                        <li><a href="<?php echo $this->url('dashboard/updateinfo') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>">Messages</a></li>
-                        <li class="divider"></li>
-                        <li><a href="<?php echo $this->url('zfcuser/logout') ?>">Logout</a></li>
+  if(in_array('countrytree',$urlArray)){
+      $url='countrytree';
+  }else{
+      $url=end($urlArray);     
+  }
+ 
+
+     
+    
+?>
+
+<nav class="navbar-default navbar-static-side" role="navigation" >
+        <div class="sidebar-collapse">
+            <ul class="nav" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element"> <span>
+           
+                            
+   <?php $avatar='/avatar/noavatar.jpg';
+   if(strlen($this->zfcUserIdentity()->picture)){
+     $avatar=$this->zfcUserIdentity()->picture;
+   }
+   
+   ?>    <a  href="<?php echo $this->url('disciples',array('action'=> 'profile'))?>" >
+           
+                  <img alt="image" height="48" class="img-circle" src="<?php echo $this->basePath($avatar)?>" />
+                                   </span>
+
+                <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">
+                                <?php 
+                                                      
+                                 
+                                        echo $this->zfcUserIdentity()->displayName; ?>
+                            </strong>
+             </span> <span class="text-muted text-xs block">
+             
+             <?php 
+                switch($this->zfcUserIdentity()->role_id){
+                 case SUPERADMIN :
+                echo $admin=$this->translate('Super Admin Panel');
+                 break;
+                 case AREAADMIN:
+                 echo $admin=$this->translate('Area Admin Panel');
+                 break;
+                  case COUNTRYADMIN:
+                 echo $admin=$this->translate('Country Admin Panel');
+                 break;
+             default :
+            echo  $this->translate('Missionarry'); 
+             }
+            
+             $this->UserCountries($this->zfcUserIdentity()->role_id,$this->zfcUserIdentity()->id);
+             ?>
+             
+           </span> </span> </a>
+                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                            <li><a href="" >Profile</a></li>
+                             <li class="divider"></li>
+                            <li><a href="<?php echo $this->url('zfcuser/logout') ?>">Logout</a></li>
+                        </ul>
+                    </div>
+                    <div class="logo-element">
+                        D+
+                    </div>
+                </li>
+                <li <?php if($url=='dashboard'){?> class="active" <?php } ?>>
+                    <a href="<?php echo $this->url('dashboard') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>"><i class="fa fa-th-large fa-yellow "></i> <span class="nav-label"><?php echo $this->translate('Dashboard')?></span> </a>
+                    </li>
+                                
+         <?php /* this code for  admin */ if($this->zfcUserIdentity()->role_id==SUPERADMIN ||$this->zfcUserIdentity()->role_id==AREAADMIN ||$this->zfcUserIdentity()->role_id==COUNTRYADMIN ){
+             
+                         
+             
+               ?>
+             <li <?php if(in_array($url,array('countrytree','country','movement','display','users','testimonialtool','newstool','ishare'))){?> class="active" <?php } ?> >     <a href="#"><i class="fa fa-cog fa-yellow "></i> <span class="nav-label"><?php echo $admin; ?> </span> <span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level">
+    <li <?php if($url=='country'){?> class="subactive" <?php } ?> ><a href="<?php echo $this->url('tree', array('action'=>'country'));?>" ><i class="fa fa-flag fa-yellow"></i><?php echo $this->translate('Country')?></a></li>
+    <li <?php if($url=='countrytree'){?> class="subactive" <?php } ?> ><a href="<?php echo $this->url('tree', array('action'=>'countrytree'));?>" ><i class="fa fa-tree fa-yellow"></i><?php echo $this->translate('Country Tree')?></a></li>
+ 
+    <li <?php if($url=='movement'){?> class="subactive" <?php } ?> ><a href="<?php echo $this->url('movement', array('action'=>'index'));?>"><i class="fa fa-question-circle fa-yellow "></i><?php echo $this->translate('Build Movement')?></a></li>
+             <li <?php if($url=='display'){?> class="subactive" <?php } ?> >
+        <a href="<?php echo $this->url('learn', array('action'=>'display'))  ?>">
+           <i class="fa fa-leanpub fa-yellow" aria-hidden="true"></i><?php echo $this->translate('Learning Tools')?></a>
+</li>
+<li <?php if($url=='ishare'){?> class="subactive" <?php } ?> >
+        <a href="<?php echo $this->url('share', array('action'=>'ishare'))  ?>">
+           <i class="fa fa-share-alt fa-yellow" aria-hidden="true"></i><?php echo $this->translate('Share Tools')?></a>
+</li>
+
+ <li <?php if($url=='testimonialtool'){?> class="subactive" <?php } ?> >
+        <a href="<?php echo $this->url('testimonial', array('action'=>'testimonialtool')) ?>">
+     <i class="fa fa-quote-left  fa-yellow "></i> <?php echo $this->translate('Testimonial Tool')?></a>
+</li>        
+
+ <li <?php if($url=='newstool'){?> class="subactive" <?php } ?> >
+        <a href="<?php echo $this->url('news', array('action'=>'newstool')) ?>">
+     <i class="fa fa-newspaper-o  fa-yellow "></i> <?php echo $this->translate('News Tool')?></a>
+</li>  
+ <?php   if($this->zfcUserIdentity()->role_id==SUPERADMIN ||$this->zfcUserIdentity()->role_id==AREAADMIN){ ?>
+                <li <?php if($url=='users'){?> class="subactive" <?php } ?> ><a href="<?php echo $this->url('users', array('action'=>'index'));?>" ><i class="fa fa-users fa-yellow "></i>
+<?php echo $this->translate('Manage Roles')?> </a></li>
+      <?php } ?>
                     </ul>
-                </div>
-                <div class="logo-element">
-                    Deeplife
-                </div>
-            </li>
-            <li class="active">
-                <a><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level collapse in">
-                    <li class="active"><a href="<?php echo $this->url('dashboard') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>"">User Dashboard</a></li>
-                    <li><a href="<?php echo $this->url('dashboard/updateinfo') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>">Settings</a></li>
+           </li>
+                
+                <?php } ?>      
+                
+              <li <?php if($url=='disciples'){?> class="active" <?php } ?> >
+        <a href="<?php echo $this->url('disciples') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>">
+                <i class="fa fa-user fa-yellow "></i> <span class="nav-label"><?php echo $this->translate('Disciples')?></span></a>
+</li>             
+              <li <?php if($url=='tree'){?> class="active" <?php } ?> >
+        <a href="<?php echo $this->url('tree') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>">
+                <i class="fa fa-users fa-yellow "></i> <span class="nav-label"><?php echo $this->translate('Generation Tree')?></span></a>
+</li>
+        
+     
+  <li <?php if($url=='learn'){?> class="active" <?php } ?> >
+        <a href="<?php echo $this->url('learn')  ?>">
+           <i class="fa fa-leanpub fa-yellow" aria-hidden="true"></i><span class="nav-label"><?php echo $this->translate('Learn')?> </span></a>
+</li>
+      
+      
+      <li <?php if($url=='schedule'){?> class="active" <?php } ?> >
+        <a href="<?php echo $this->url('schedule') ?>">
+                <i class="fa fa-clock-o  fa-yellow "></i> <span class="nav-label"><?php echo $this->translate('Schedule')?></span></a>
+</li>     
+     
+      <li <?php if($url=='messaging'){?> class="active" <?php } ?> >
+        <a href="<?php echo $this->url('messaging') ?>">
+                <i class="fa fa-envelope-o  fa-yellow "></i> <span class="nav-label"><?php echo $this->translate('Messaging')?></span></a>
+</li>     
+      <li <?php if($url=='share'){?> class="active" <?php } ?> >
+        <a href="<?php echo $this->url('share') ?>">
+                <i class="fa fa-share-alt  fa-yellow "></i> <span class="nav-label"><?php echo $this->translate('Share')?></span></a>
+</li>    
+          <li <?php if($url=='testimonial'){?> class="active" <?php } ?> >
+        <a href="<?php echo $this->url('testimonial') ?>">
+                <i class="fa fa-quote-left  fa-yellow "></i> <span class="nav-label"><?php echo $this->translate('Testimonial')?></span></a>
+</li>        
+         <li <?php if($url=='news'){?> class="active" <?php } ?> >
+        <a href="<?php echo $this->url('news',array('action'=>'index')) ?>">
+                <i class="fa fa-newspaper-o  fa-yellow "></i> <span class="nav-label"><?php echo $this->translate('News')?></span></a>
+</li>      
+       
+            </ul>
 
-                </ul>
-            </li>
+        </div>
+    </nav>
 
-            <li>
-                <a href=" "><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Disciples</span><span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level collapse in">
-                    <li><a href="<?php echo $this->url('dashboard/adddisciple') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>">Add</a></li>
-                    <li><a href="<?php echo $this->url('dashboard/listdisciple') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>">List</a></li>
 
-                </ul>
-            </li>
-
-            <li class="">
-                <a href="http://deeplife.cccsea.org/#/layouts%20target="><i class="fa fa-magic"></i> <span class="nav-label">Win </span><span class="label label-info pull-right">62</span></a>
-            </li>
-            <li>
-                <a target="_blank" href="http://deeplife.cccsea.org/#/widgets"><i class="fa fa-magic"></i> <span class="nav-label">Build</span><span class="label label-info pull-right">62</span></a>
-            </li>
-            <li>
-                <a target="_blank" href="http://deeplife.cccsea.org/#/grid_options"><i class="fa fa-magic"></i> <span class="nav-label">Send</span><span class="label label-info pull-right">62</span></a>
-            </li>
-            <li class="">
-                <a href="<?php echo $this->url('resource') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>">Resource </a>
-            </li>
-            <li class="">
-                <a href="<?php echo $this->url('news') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>">NEWS </a>
-            </li>
-            <li class="special_link">
-                <a href="<?php echo $this->url('tree') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>"><i class="fa fa-database"></i> <span class="nav-label">Generation Tree</span></a>
-
-        </ul>
-</div>
-    </div>
-</nav>

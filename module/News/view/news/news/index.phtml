@@ -1,0 +1,126 @@
+<style>
+
+a.morelink {
+    text-decoration:none;
+    outline: none;
+}
+.morecontent span {
+    display: none;
+}
+.comment {
+    width: 400px;
+    background-color: #f0f0f0;
+    margin: 10px;
+}
+.video-container {
+    position: relative;
+    height: auto;
+    overflow: hidden;
+    width: auto;
+}
+#image-preview{
+    width: 100%;
+    height: auto;
+}
+</style>
+
+<script>
+   $(document).ready(function() {
+    var showChar = 100;
+    var ellipsestext = "...";
+    var moretext = "more";
+    var lesstext = "less";
+    $('.more').each(function() {
+        var content = $(this).html();
+
+        if(content.length > showChar) {
+
+            var c = content.substr(0, showChar);
+            var h = content.substr(showChar-1, content.length - showChar);
+
+            var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
+
+            $(this).html(html);
+        }
+
+    });
+
+    $(".morelink").click(function(){
+        if($(this).hasClass("less")) {
+            $(this).removeClass("less");
+            $(this).html(moretext);
+        } else {
+            $(this).addClass("less");
+            $(this).html(lesstext);
+        }
+        $(this).parent().prev().toggle();
+        $(this).prev().toggle();
+        return false;
+    });
+});
+</script>
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5><?php echo $this->translate('NEWS')?></h5>
+            </div>
+            <div class="ibox-content">
+                
+                <ul class="learning">
+
+                    <?php  foreach ($news as $new) : ?>
+                        <li>
+
+                            <div class="row">
+                                <div class="col-sm-3 col-md-2">
+                                    <div class="image-holder">
+                                        <div class="video-container" id="video-contain" style="text-align:center">
+
+                                          <?php  if(strlen($new['image'])){ ?>
+                                              <img id="image-preview" src="<?php echo $this->basePath($new['image'])?>" width="300" height="270" alt="" />
+
+                                          <?php }else{?>
+                                              <b>No Image</b>
+                                         <?php  }      ?>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-8 learn-content">
+                                    <div class="cell">
+                         <h2><?php echo $this->escapeHtml(ucwords($new['title']));?></h2>
+                                        <p><span class="more" ><?php echo $this->escapeHtml(ucwords($new['description']));?> </span ></p>
+ <span class="vertical-date">
+              <small><?php echo $this->escapeHtml(date_format($new['created'], '  l jS F Y'));?>
+             </small>
+                                    </span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Video / Generic Modal -->
+<div class="modal fade" id="mediaModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <!-- content dynamically inserted -->
+            </div>
+        </div>
+    </div>
+</div>
+
+

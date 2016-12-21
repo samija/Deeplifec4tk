@@ -10,15 +10,74 @@
 namespace Application;
 
 return array(
+
     'router' => array(
         'routes' => array(
+            /*
             'home' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
-                    'route'    => '/',
+                    'route' => '/',
                     'defaults' => array(
-                        'controller' => 'SamUser\Controller\Dashboard',
-                        'action'     => 'index',
+                        'controller' => 'zfcuser',
+                        'action' => 'login',
+                    ),
+                ),
+            ),
+            */
+
+            'mobileapp' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route' => '/mobileapp',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Index',
+                        'action' => 'mobileapp',
+                    ),
+                ),
+            ),
+
+            'signup' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route' => '/signup',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Index',
+                        'action' => 'signup',
+                    ),
+                ),
+            ),
+
+            'ajaxforgot' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route' => '/ajaxforgot',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Index',
+                        'action' => 'ajaxforgot',
+                    ),
+                ),
+            ),
+
+
+            'resetpassword' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route' => '/resetpassword',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Index',
+                        'action' => 'resetpassword',
+                    ),
+                ),
+            ),
+
+            'contactus' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route' => '/contactus',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Index',
+                        'action' => 'contactus',
                     ),
                 ),
             ),
@@ -27,33 +86,34 @@ return array(
             // module. Simply drop new controllers in, and you can access them
             // using the path /application/:controller/:action
             'application' => array(
-                'type'    => 'Literal',
+                'type' => 'Literal',
                 'options' => array(
-                    'route'    => '/application',
+                    'route' => '/application',
                     'defaults' => array(
                         '__NAMESPACE__' => 'Application\Controller',
-                        'controller'    => 'Index',
-                        'action'        => 'index',
+                        'controller' => 'Index',
+                        'action' => 'index',
                     ),
                 ),
+
                 'may_terminate' => true,
                 'child_routes' => array(
                     'default' => array(
-                        'type'    => 'Segment',
+                        'type' => 'Segment',
                         'options' => array(
-                            'route'    => '/[:controller[/:action]]',
+                            'route' => '/[:controller[/:action]]',
                             'constraints' => array(
                                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                             ),
-                            'defaults' => array(
-                            ),
+                            'defaults' => array(),
                         ),
                     ),
                 ),
             ),
         ),
     ),
+
     'service_manager' => array(
         'abstract_factories' => array(
             'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
@@ -63,52 +123,50 @@ return array(
             'translator' => 'Zend\Mvc\Service\TranslatorServiceFactory',
         ),
     ),
-//    'translator' => array(
-//        'locale' => 'en_us',
-//        'translation_file_patterns' => array(
-//            array(
-//                'type'     => 'gettext',
-//                'base_dir' => __DIR__ . '/../language',
-//                'pattern'  => '%s.mo',
-//            ),
-//        ),
-//    ),
-    'controllers' => array(
-        'invokables' => array(
-            'Application\Controller\Index' =>'Application\Controller\IndexController'
+
+    'translator' => array(
+        'locale' => 'en_US',
+        'translation_file_patterns' => array(
+            array(
+                'type' => 'gettext',
+                'base_dir' => __DIR__ . '/../language',
+                'pattern' => '%s.mo',
+            ),
         ),
     ),
+
+    'controllers' => array(
+        'invokables' => array(
+            'Application\Controller\Index' => 'Application\Controller\IndexController'
+        ),
+    ),
+
     'view_manager' => array(
         'display_not_found_reason' => true,
-        'display_exceptions'       => true,
-        'doctype'                  => 'HTML5',
-        'not_found_template'       => 'error/404',
-        'exception_template'       => 'error/index',
+        'display_exceptions' => true,
+        'doctype' => 'HTML5',
+        'not_found_template' => 'error/404',
+        'exception_template' => 'error/index',
         'template_map' => array(
-            'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
-            'rnav'  => __DIR__ . '/../view/layout/rnav.phtml',
-            'profile'  => __DIR__ . '/../view/layout/profile.phtml',
-            'mentorinfo'  => __DIR__ . '/../view/layout/mentorinfo.phtml',
-            'wbsinfo'  => __DIR__ . '/../view/layout/wbsinfo.phtml',
-            'info'  => __DIR__ . '/../view/layout/info.phtml',
-            'headtitle'  => __DIR__ . '/../view/layout/headtitle.phtml',
-            'headnav'  => __DIR__ . '/../view/layout/headnav.phtml',
-            'tree'  => __DIR__ . '/../view/layout/tree.phtml',
-            'footer'  => __DIR__ . '/../view/layout/footer.phtml',
+            'layout/layout' => __DIR__ . '/../view/layout/layout.phtml',
+            'layout/master' => __DIR__ . '/../view/layout/master.phtml',
+            'forgot' => __DIR__ . '/../view/application/index/email/forgot.phtml',
+            'contactusemail' => __DIR__ . '/../view/application/index/email/contactusemail.phtml',
             'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
-            'error/404'               => __DIR__ . '/../view/error/404.phtml',
-            'error/index'             => __DIR__ . '/../view/error/index.phtml',
-            'partial/pagination'      => __DIR__ . '/../view/partial/pagination.phtml',
+            'error/404' => __DIR__ . '/../view/error/404.phtml',
+            'error/index' => __DIR__ . '/../view/error/index.phtml',
+            'partial/pagination' => __DIR__ . '/../view/partial/pagination.phtml',
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',
         ),
     ),
+
+
     // Placeholder for console routes
     'console' => array(
         'router' => array(
-            'routes' => array(
-            ),
+            'routes' => array(),
         ),
     ),
 );

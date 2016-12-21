@@ -21,7 +21,7 @@ $settings = [
      * instead of the default one provided. Default is ZfcUser\Entity\User.
      * The entity class should implement ZfcUser\Entity\UserInterface
      */
-   'user_entity_class' => 'SamUser\Entity\User',
+    'user_entity_class' => 'SamUser\Entity\Users',
 
     /**
      * Enable registration
@@ -71,7 +71,7 @@ $settings = [
      * Default value: array containing 'email'
      * Accepted values: array containing one or more of: email, username
      */
-    'auth_identity_fields' => array( 'email' ),
+    'auth_identity_fields' => array('email', 'phone_no'),
 
     /**
      * Login form timeout
@@ -137,11 +137,11 @@ $settings = [
     'use_redirect_parameter_if_present' => true,
 
     /**
-	 * Sets the view template for the user login widget
-	 *
-	 * Default value: 'zfc-user/user/login.phtml'
+     * Sets the view template for the user login widget
+     *
+     * Default value: 'zfc-user/user/login.phtml'
      * Accepted values: string path to a view script
-	 */
+     */
     //'user_login_widget_view_template' => 'zfc-user/user/login.phtml',
 
     /**
@@ -163,7 +163,7 @@ $settings = [
      * Default value: 'zfcuser/login'
      * Accepted values: A valid route name within your application
      */
-    'logout_redirect_route' => 'zfcuser/login',
+    'logout_redirect_route' => '/',
 
     /**
      * Password Security
